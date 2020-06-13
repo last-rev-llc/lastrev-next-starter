@@ -1,0 +1,53 @@
+/* ====================
+  Base / Themes
+  ===================== */
+/*
+  .theme-dark {
+    color: theme-color('white');
+    background-color: theme-color('black');
+
+    .btn {
+      &.btn-default {
+        background-color: theme-color('white');
+        border-color: theme-color('white');
+
+        &:hover {
+          background-color: theme-color('black');
+          color: theme-color('white');
+        }
+      }
+      
+      &.btn-outline-default {
+        background-color: theme-color('black');
+        color: theme-color('white');
+        border-color: theme-color('white');
+
+        &:hover {
+          background-color: color('white');
+          color: theme-color('black');
+        }
+      }
+    }
+
+    a:hover {
+      border-bottom: 3px solid color('white');
+    }
+  }
+
+  .theme-colorful {
+    color: theme-color('black');
+    background-color: theme-color('colorful');
+
+    .btn {
+      &.btn-outline-default {
+        background-color: transparent;
+        border-color: theme-color('black');
+
+        &:hover {
+          background-color: theme-color('black');
+          color: theme-color('colorful')
+        }
+      }
+    }
+  }
+*/

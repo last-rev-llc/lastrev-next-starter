@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+_package-lock.json
 
 # testing
 /coverage
@@ -24,7 +25,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env
+
+# Local Netlify folder
+.netlify
+
+# Storybook
+storybook-static
+.out

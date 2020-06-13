@@ -1,0 +1,61 @@
+/* ====================
+  Base / HTML Elements
+  ===================== */
+.wrap {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  > .content {
+    flex-grow: 1;
+  }
+}
+
+.container-fluid {
+  &.container-md {
+    max-width: map-get($container-max-widths, "md");
+  }
+
+  &.container-lg {
+    max-width: map-get($container-max-widths, "lg");
+  }
+
+  &.container-xl {
+    max-width: map-get($container-max-widths, "xl");
+  }
+}
+
+.section {
+  margin-top: $grid-gutter-width;
+  margin-bottom: $grid-gutter-width;
+
+  &[class*=theme-] {
+    padding-top: $grid-gutter-width;
+    padding-bottom: $grid-gutter-width;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+    
+  @include media-breakpoint-up(xl) {
+    margin-top: $grid-gutter-width * 2;
+    margin-bottom: $grid-gutter-width * 2;
+
+    &[class*=theme-] {
+      padding-top: $grid-gutter-width * 2;
+      padding-bottom: $grid-gutter-width * 2;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.sub-section {
+  margin-top: $grid-gutter-width / 2;
+  margin-bottom: $grid-gutter-width / 2;
+    
+  @include media-breakpoint-up(xl) {
+    margin-top: $grid-gutter-width;
+    margin-bottom: $grid-gutter-width;
+  }
+}
