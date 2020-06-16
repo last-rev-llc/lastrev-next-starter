@@ -33,3 +33,6 @@ yarn-error.log*
 # Storybook
 storybook-static
 .out
+
+# Contentful cache
+/content-cache

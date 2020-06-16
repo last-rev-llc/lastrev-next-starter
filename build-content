@@ -1,0 +1,89 @@
+#! /usr/bin/env node
+require('dotenv').config();
+
+const _ = require('lodash');
+const { promisify } = require('util');
+const { exists: e, mkdir: m, writeFile: w } = require('fs');
+const contentful = require('contentful');
+const { join } = require('path');
+
+const exists = promisify(e);
+const mkdir = promisify(m);
+const writeFile = promisify(w);
+
+const CONTENT_DIR = './content-cache';
+const PATHS_JSON_FILE = join(CONTENT_DIR, 'paths.json');
+const SETTINGS_JSON_FILE = join(CONTENT_DIR, 'settings.json');
+const PAGE_GENERAL = 'pageGeneral';
+
+const client = contentful.createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  environment: process.env.CONTENTFUL_ENV || 'master',
+  accessToken: process.env.CONTENTFUL_ACCESSTOKEN,
+  host: process.env.CONTENTFUL_HOST || 'preview.contentful.com'
+});
+
+const removeCircularRefs = (entries) => {
+  return JSON.parse(entries.stringifySafe());
+};
+
+const getStaticSlugsForContentType = async (contentType) => {
+  const queryResults = await client.getEntries({
+    content_type: contentType,
+    select: 'fields.slug'
+  });
+
+  if (queryResults.items) {
+    return queryResults.items.map((item) => item.fields.slug);
+  }
+
+  return [];
+};
+
+const getGlobalSettings = async () => {
+  try {
+    const entries = await client.getEntries({
+      'content_type': 'settingsGlobal',
+      'sys.id': process.env.CONTENTFUL_SETTINGS_ID,
+      'include': 2
+    });
+    return _.head(removeCircularRefs(entries).items).fields;
+  } catch (err) {
+    console.log(err);
+  }
+  return null;
+};
+
+const mkdirIfNotExists = async () => {
+  if (!(await exists(CONTENT_DIR))) {
+    mkdir(CONTENT_DIR);
+  }
+};
+
+const writePathsJson = async ({ pageGeneralSlugs }) => {
+  const firstLevelPaths = _.map(pageGeneralSlugs, (slug) => ({ params: { slug } }));
+  const out = JSON.stringify({ '/': firstLevelPaths }, null, 2);
+  writeFile(PATHS_JSON_FILE, out);
+};
+
+const writeSettingsJson = async (globalSettings) => {
+  const out = JSON.stringify(globalSettings, null, 2);
+  writeFile(SETTINGS_JSON_FILE, out);
+};
+
+const build = async () => {
+  await mkdirIfNotExists();
+
+  const [pageGeneralSlugs, globalSettings] = await Promise.all([
+    getStaticSlugsForContentType(PAGE_GENERAL),
+    getGlobalSettings()
+  ]);
+
+  await Promise.all([writePathsJson({ pageGeneralSlugs }), writeSettingsJson(globalSettings)]);
+};
+
+build()
+  .then('Successfully wrote content files')
+  .catch((err) => {
+    console.log('Unable to write content files', err);
+  });
