@@ -1,4 +1,4 @@
-import mockElementLink from 'src/components/ElementLink/ElementLink.mock';
+import mockElementLink from '../ElementLink/ElementLink.mock';
 
 export default {
   header: 'Hello World!',

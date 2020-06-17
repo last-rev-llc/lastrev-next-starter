@@ -1,5 +1,19 @@
-@import '../../styles/component.scss';
+.module-hero-inner-wrap {
+  composes: container sub-section from global;
+}
 
-.header {
-  color: red;
+.header-wrap {
+  * {
+    margin-bottom: 0;
+  }
+
+  margin-bottom: 1rem;
+}
+
+.summary-wrap {
+  * {
+    margin-bottom: 0;
+  }
+
+  margin-bottom: 1rem;
 }
