@@ -10,7 +10,7 @@ function ModuleHero({ header, summary, cta }) {
         {header}
       </h1>
       <p>{summary}</p>
-      <ElementLink url={cta.url} text={cta.text} />
+      <ElementLink {...cta} />
     </div>
   );
 }
