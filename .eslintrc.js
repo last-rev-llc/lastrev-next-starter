@@ -6,7 +6,7 @@ module.exports = {
   },
   ignorePatterns: ['out/', 'storybook-static'],
   rules: {
-    'indent': ['error', 2],
+    'indent': ['error', 2, { SwitchCase: 1 }],
     'react/jsx-filename-extension': 0,
     'function-paren-newline': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
@@ -18,8 +18,9 @@ module.exports = {
     'array-callback-return': 0,
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'react/jsx-indent': ['error', 2],
-    'react/jsx-closing-bracket-location': [2, 'after-props'],
-    'semi': ['error', 'always']
+    'react/jsx-closing-bracket-location': [2, { nonEmpty: 'after-props', selfClosing: false }],
+    'semi': ['error', 'always'],
+    'jsx-a11y/anchor-is-valid': 0
   },
   settings: {
     'import/resolver': {

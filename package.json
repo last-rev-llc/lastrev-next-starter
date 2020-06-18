@@ -19,6 +19,7 @@
     "build-content": "./build-content"
   },
   "dependencies": {
+    "app-root-path": "^3.0.0",
     "bootstrap": "^4.5.0",
     "contentful": "^7.14.4",
     "dotenv": "^8.2.0",

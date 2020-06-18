@@ -36,3 +36,6 @@ storybook-static
 
 # Contentful cache
 /content-cache
+
+# client configs
+/config

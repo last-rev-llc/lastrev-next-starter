@@ -1,29 +1,11 @@
+/* eslint-disable react/jsx-max-props-per-line */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import NextLink from 'next/link';
 import _ from 'lodash';
 import propTypes, { standardLinkPropTypes, internalLinkPropTypes } from './ElementLink.propTypes';
 import styles from './ElementLink.module.scss';
-
-const getInternalUrl = (internalUrl) => {
-  const {
-    fields: { slug },
-    sys: {
-      contentType: {
-        sys: { id }
-      }
-    }
-  } = internalUrl;
-  switch (id) {
-    case 'pageGeneral':
-      return {
-        href: '/[slug]',
-        as: `/${slug}`
-      };
-    default:
-      break;
-  }
-  return {};
-};
+import getInternalUrl from '../../utils/getInternalUrl';
 
 const StandardLink = ({ target, href, className, linkText }) => {
   return (
@@ -56,7 +38,7 @@ InternalLink.defaultProps = {
 };
 
 const getFullClassName = ({ className, icon }) => {
-  return `${styles.link} ${className ? className : ''} icon_${_.snakeCase(icon)}`;
+  return `${styles.link} ${className || ''} icon_${_.snakeCase(icon)}`;
 };
 
 function ElementLink({ className, action, internalUrl, externalUrl, anchorTagName, linkText, icon }) {
