@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 import PreviewWrapper from '../components/PreviewWrapper';
 
 const Preview = () => {
-  const router = useRouter();
   const {
     query: { id, contentType }
-  } = router;
+  } = useRouter();
   return <PreviewWrapper contentType={contentType} id={id} />;
 };
 

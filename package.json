@@ -39,6 +39,7 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "@testing-library/react": "^10.0.4",
+    "@types/jest": "^26.0.0",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "concurrently": "^5.2.0",
