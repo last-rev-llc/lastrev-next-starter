@@ -1,2 +1,9 @@
 @import '../../styles/component.scss';
 
+.link {
+  &.icon_phone {
+    :before {
+      content: 'HI';
+    }
+  }
+}

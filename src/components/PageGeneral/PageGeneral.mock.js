@@ -1,3 +1,5 @@
 export default {
-  header: 'Hello World!'
+  internalTitle: 'Homepage',
+  pageTitle: 'Homepage',
+  slug: '/home'
 };
