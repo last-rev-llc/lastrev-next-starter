@@ -130,3 +130,27 @@ $display1-size:               6rem !default;
 $display2-size:               5.5rem !default;
 $display3-size:               4.5rem !default;
 $display4-size:               3.5rem !default;
+
+
+// Cards
+
+$card-spacer-y:                     $grid-gutter-width / 4; // 1.75rem !default;
+$card-spacer-x:                     $grid-gutter-width / 4; // 1.25rem !default;
+$card-border-width:                 1px; // $border-width !default;
+$card-border-radius:                0.25rem; // $border-radius !default;
+$card-border-color:                 rgba($black, .125) !default;
+$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
+$card-cap-bg:                       $white; // rgba($black, .03) !default;
+$card-cap-color:                    null !default;
+$card-height:                       null !default;
+$card-color:                        null !default;
+$card-bg:                           $white; // $white !default;
+
+$card-img-overlay-padding:          1.25rem !default;
+
+$card-group-margin:                 $grid-gutter-width / 2 !default;
+$card-deck-margin:                  $card-group-margin !default;
+
+$card-columns-count:                3 !default;
+$card-columns-gap:                  1.25rem !default;
+$card-columns-margin:               $card-spacer-y !default;

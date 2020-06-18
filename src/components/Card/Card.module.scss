@@ -1,5 +1,31 @@
-@import '../../styles/component.scss';
+.module-card {
+  composes: card from global;
+}
 
-.header {
-  color: red;
+.card-header {
+  composes: card-header from global;
+  border: none;
+
+  * {
+    margin-bottom: 0;
+  }
+}
+
+.card-title {
+  composes: card-title from global;
+  color:red;
+  font-size: 100px;
+}
+
+.card-body {
+  composes: card-body from global;
+}
+
+.card-text {
+  composes: card-text from global;
+}
+
+.card-footer {
+  composes: card-footer from global;
+  border: none;
 }

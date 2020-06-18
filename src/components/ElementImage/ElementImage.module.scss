@@ -1,1 +1,3 @@
-@import '../../styles/component.scss';
+.img {
+    composes: img-fluid from global;
+}

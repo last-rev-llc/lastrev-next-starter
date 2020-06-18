@@ -1,5 +1,13 @@
 @import '../../styles/component.scss';
 
-.header {
-  color: red;
+.section-card-container {
+  composes: container from global;
+}
+
+.section-card-row {
+  composes: row from global;
+}
+
+.section-card-col {
+  composes: col-12 col-md from global;
 }

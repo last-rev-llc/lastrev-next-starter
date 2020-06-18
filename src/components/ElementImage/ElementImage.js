@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from './ElementImage.propTypes';
+import styles from './ElementImage.module.scss';
 
-function ElementImage({ url, altText }) {
+function ElementImage({ src, alt, className }) {
   return (
-    <img src={url} alt={altText} />
+    <img src={src} alt={alt} className={`${styles.img} ${className}`} />
   );
 }
 

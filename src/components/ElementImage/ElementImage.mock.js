@@ -1,4 +1,5 @@
 export default {
-  url: 'https://placehold.it/300x300',
-  altText: 'this is the alt text'
+  src: 'https://placehold.it/300x300',
+  alt: 'this is the alt text',
+  className: 'img-class-name'
 };

@@ -1,4 +1,5 @@
 export default {
   url: 'https://lastrev.com',
-  text: 'Last Rev'
+  text: 'Last Rev',
+  className: 'sample-link-class'
 };
