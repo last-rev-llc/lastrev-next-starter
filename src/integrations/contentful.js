@@ -6,14 +6,14 @@ const removeCircularRefs = (entries) => {
   return JSON.parse(entries.stringifySafe());
 };
 
-export const client = contentful.createClient({
+const client = contentful.createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   environment: process.env.CONTENTFUL_ENV || 'master',
   accessToken: process.env.CONTENTFUL_ACCESSTOKEN,
   host: process.env.CONTENTFUL_HOST || 'preview.contentful.com'
 });
 
-export const getPageBySlug = async (slug, contentType) => {
+exports.getPageBySlug = async (slug, contentType) => {
   try {
     const entries = await client.getEntries({
       'content_type': contentType,
@@ -27,7 +27,7 @@ export const getPageBySlug = async (slug, contentType) => {
   return null;
 };
 
-export const getFullContentById = async (contentType, id) => {
+exports.getFullContentById = async (contentType, id) => {
   const queryResults = await client.getEntries({
     'content_type': contentType,
     'sys.id': id,
@@ -37,4 +37,24 @@ export const getFullContentById = async (contentType, id) => {
   return _.head(queryResults.items);
 };
 
-export default {};
+exports.getStaticSlugsForContentType = async (contentType) => {
+  const queryResults = await client.getEntries({
+    content_type: contentType,
+    select: 'fields.slug'
+  });
+
+  if (queryResults.items) {
+    return queryResults.items.map((item) => item.fields.slug);
+  }
+
+  return [];
+};
+
+exports.getGlobalSettings = async () => {
+  const entries = await client.getEntries({
+    'content_type': 'settingsGlobal',
+    'sys.id': process.env.CONTENTFUL_SETTINGS_ID,
+    'include': 2
+  });
+  return _.head(removeCircularRefs(entries).items).fields;
+};
