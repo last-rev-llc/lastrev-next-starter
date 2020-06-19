@@ -2,7 +2,7 @@
   functions = "serverless"
 
 [dev]
-  command = "npm run start:dev"
+  command = "npx next dev"
   functions = "serverless"
   publish = "public"
 
