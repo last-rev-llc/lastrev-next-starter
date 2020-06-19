@@ -8,5 +8,5 @@ export default {
   decorators: [withKnobs]
 };
 
-export const normal = () => <ModuleHero header={text('header', mockContent.header)} />;
-export const anotherVersion = () => <ModuleHero header={text('header', mockContent.header)} summary={text('summary', mockContent.summary)} />;
+export const normal = () => <ModuleHero header={text('header', mockContent.header)} cta={text('cta', mockContent.cta)} />;
+export const anotherVersion = () => <ModuleHero header={text('header', mockContent.header)} summary={text('summary', mockContent.summary)} cta={text('cta', mockContent.cta)} />;
