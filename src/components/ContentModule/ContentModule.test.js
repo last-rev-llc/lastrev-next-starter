@@ -1,18 +1,26 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
+import lookupComponentByContentType from '../../utils/lookupComponentByContentType';
 import ContentModule from './ContentModule';
-import mockContent from './ContentModule.mock';
+
+jest.mock('../../utils/lookupComponentByContentType', () => () => {
+  return 'div';
+});
 
 afterEach(() => {
   cleanup();
 });
 
-describe('<ContentModule />', () => {
-  describe('<ContentModule /> renders correctly', () => {
-    test('Header is displayed correctly', () => {
-      const { header } = mockContent;
-      const { getByTestId } = render(<ContentModule header={header} />);
-      expect(getByTestId('ContentModule-header').textContent).toBe(header);
+describe('<ContentModule/>', () => {
+  describe('<ContentModule/> renders content correctly', () => {
+    const fields = { className: 'test' };
+    it('renders module passing in the correct fields', () => {
+      const { container } = render(<ContentModule contentTypeId="moduleCadGeneral" fields={fields} />);
+
+      expect(container.querySelector('div.test')).not.toBe(null);
     });
   });
 });

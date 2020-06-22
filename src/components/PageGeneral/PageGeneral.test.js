@@ -1,7 +1,15 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import PageGeneral from './PageGeneral';
 import mockContent from './PageGeneral.mock';
+import lookupComponentByContentType from '../../utils/lookupComponentByContentType';
+
+jest.mock('../../utils/lookupComponentByContentType', () => () => {
+  return 'div';
+});
 
 afterEach(() => {
   cleanup();

@@ -1,20 +1,16 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import propTypes from './ContentModule.propTypes';
-import styles from './ContentModule.module.scss';
-import mockContent from './ContentModule.mock';
+import lookupComponentByContentType from '../../utils/lookupComponentByContentType';
 
-function ContentModule({ header }) {
-  return (
-    <div data-testid="ContentModule">
-      <h1 className={styles.header} data-testid="ContentModule-header">
-        {header}
-      </h1>
-    </div>
-  );
-}
+const ContentModule = ({ contentTypeId, fields }) => {
+  const Main = lookupComponentByContentType(contentTypeId);
+
+  return <Main {...fields} />;
+};
 
 ContentModule.propTypes = propTypes;
-
-ContentModule.defaultProps = mockContent;
 
 export default ContentModule;
