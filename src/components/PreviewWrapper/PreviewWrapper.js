@@ -6,13 +6,16 @@ import React, { useEffect, useState } from 'react';
 import lookupComponentByContentType from '../../utils/lookupComponentByContentType';
 import { getFullContentById } from '../../integrations/contentful';
 import propTypes from './PreviewWrapper.propTypes';
+// TODO: this is very coupled to Contentful, but that may just be the case with this component.
+import Adapter from '../../adapters/contentful';
 
-function PreviewWrapper({ id, contentType }) {
+function PreviewWrapper({ id, contentType, urlMap }) {
   if (!id && !contentType) return null;
+  const transform = Adapter({ urlMap });
   const [content, setContent] = useState();
   useEffect(async () => {
     const myContent = await getFullContentById(contentType, id);
-    setContent(myContent);
+    setContent(transform(myContent));
   });
   if (!content) return null;
   try {

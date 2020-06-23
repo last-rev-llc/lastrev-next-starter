@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import _ from 'lodash';
 import propTypes, { standardLinkPropTypes, internalLinkPropTypes } from './ElementLink.propTypes';
 import styles from './ElementLink.module.scss';
-import getInternalUrl from '../../utils/getInternalUrl';
 
 const StandardLink = ({ target, href, className, linkText }) => {
   return (
@@ -52,7 +51,9 @@ function ElementLink({ className, action, internalUrl, externalUrl, anchorTagNam
   switch (action) {
     case 'Go to Internal URL':
       if (!internalUrl) throw new Error('internalUrl not selected', internalUrl);
-      ({ href, as } = getInternalUrl(internalUrl));
+      ({
+        url: { href, as }
+      } = internalUrl);
       isInternal = true;
       break;
     case 'Go to External URL':

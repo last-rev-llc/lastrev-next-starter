@@ -1,16 +1,10 @@
-import mockPageGeneral from '../PageGeneral/PageGeneral.mock';
-
 export const internalUrl = {
   action: 'Go to Internal URL',
   internalUrl: {
-    sys: {
-      contentType: {
-        sys: {
-          id: 'pageGeneral'
-        }
-      }
-    },
-    fields: mockPageGeneral
+    url: {
+      href: '/[slug]',
+      as: '/test'
+    }
   },
   linkText: 'My Page',
   icon: 'None'

@@ -39,3 +39,6 @@ storybook-static
 
 # client configs
 /config
+
+# bit.dev build output
+/dist

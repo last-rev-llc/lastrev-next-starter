@@ -56,5 +56,5 @@ exports.getGlobalSettings = async () => {
     'sys.id': process.env.CONTENTFUL_SETTINGS_ID,
     'include': 2
   });
-  return _.head(removeCircularRefs(entries).items).fields;
+  return _.head(removeCircularRefs(entries).items);
 };

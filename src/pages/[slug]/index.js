@@ -2,6 +2,7 @@ import React from 'react';
 import { getPageBySlug } from '../../integrations/contentful';
 import Layout from '../../components/Layout';
 import PageGeneral from '../../components/PageGeneral';
+import Adapter from '../../adapters/contentful';
 
 const { '/': paths } = require('../../../content-cache/paths.json');
 const settingsGlobal = require('../../../content-cache/settings.json');
@@ -28,10 +29,21 @@ export const getStaticProps = async ({ params }) => {
   const { slug } = params;
   const pageData = await getPageBySlug(slug, CONTENT_TYPE);
 
+  // TODO: This should be created by build script
+  const urlMap = {
+    pageGeneral: {
+      url: '/[key]',
+      key: 'slug'
+    }
+  };
+
+  const transform = Adapter({ urlMap });
+
   return {
     props: {
-      pageData,
-      settingsGlobal
+      pageData: transform(pageData),
+      // already transformed in build files
+      settingsGlobal: transform(settingsGlobal)
     }
   };
 };

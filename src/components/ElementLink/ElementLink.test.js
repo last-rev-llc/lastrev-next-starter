@@ -45,7 +45,12 @@ describe('<ElementLink />', () => {
           icon={internalUrl.icon}
         />
       );
-      expect(getByTestId('ElementLink').getAttribute('href')).toBe(`/${internalUrl.internalUrl.fields.slug}`);
+      const {
+        internalUrl: {
+          url: { as }
+        }
+      } = internalUrl;
+      expect(getByTestId('ElementLink').getAttribute('href')).toBe(as);
     });
   });
 
