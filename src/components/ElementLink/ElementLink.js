@@ -3,8 +3,31 @@
 import React from 'react';
 import NextLink from 'next/link';
 import _ from 'lodash';
-import propTypes, { standardLinkPropTypes, internalLinkPropTypes } from './ElementLink.propTypes';
-import styles from './ElementLink.module.scss';
+import PropTypes from 'prop-types';
+
+export const ElementLinkPropTypes = {
+  className: PropTypes.string,
+  isInternal: PropTypes.bool.isRequired,
+  href: PropTypes.string.isRequired,
+  as: PropTypes.string,
+  linkText: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  target: PropTypes.string
+};
+
+const internalLinkPropTypes = {
+  href: PropTypes.string.isRequired,
+  as: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  linkText: PropTypes.string.isRequired
+};
+
+const standardLinkPropTypes = {
+  href: PropTypes.string.isRequired,
+  target: PropTypes.string,
+  className: PropTypes.string,
+  linkText: PropTypes.string.isRequired
+};
 
 const StandardLink = ({ target, href, className, linkText }) => {
   return (
@@ -17,6 +40,7 @@ const StandardLink = ({ target, href, className, linkText }) => {
 StandardLink.propTypes = standardLinkPropTypes;
 
 StandardLink.defaultProps = {
+  className: null,
   target: null
 };
 
@@ -31,60 +55,33 @@ const InternalLink = ({ href, as, className, linkText }) => {
 };
 
 InternalLink.propTypes = internalLinkPropTypes;
+
 InternalLink.defaultProps = {
-  className: null,
-  as: null
+  className: null
 };
 
 const getFullClassName = ({ className, icon }) => {
-  return `${styles.link} ${className || ''} icon_${_.snakeCase(icon)}`;
+  if (!className && !icon) return null;
+  return `${className || ''} icon_${_.snakeCase(icon)}`;
 };
 
-function ElementLink({ className, action, internalUrl, externalUrl, anchorTagName, linkText, icon }) {
-  let href;
-  let as;
-  let target;
-  let isInternal = false;
-
+function ElementLink({ className, isInternal, href, as, target, linkText, icon }) {
   const fullClassName = getFullClassName({ className, icon });
 
-  switch (action) {
-    case 'Go to Internal URL':
-      if (!internalUrl) throw new Error('internalUrl not selected', internalUrl);
-      ({
-        url: { href, as }
-      } = internalUrl);
-      isInternal = true;
-      break;
-    case 'Go to External URL':
-      if (!externalUrl) throw new Error('externalUrl empty', externalUrl);
-      href = externalUrl;
-      target = '_blank';
-      break;
-    case 'Anchor Link':
-      if (!anchorTagName) throw new Error('anchorTagName empty', anchorTagName);
-      href = `#${anchorTagName}`;
-      break;
-    default:
-      break;
+  if (isInternal) {
+    if (!as) throw Error('"as" property not defined');
+    return <InternalLink href={href} as={as} className={fullClassName} linkText={linkText} />;
   }
-
-  if (!href) return null;
-
-  return isInternal ? (
-    <InternalLink href={href} as={as} className={fullClassName} linkText={linkText} />
-  ) : (
-    <StandardLink target={target} href={href} className={fullClassName} linkText={linkText} />
-  );
+  return <StandardLink target={target} href={href} className={fullClassName} linkText={linkText} />;
 }
 
-ElementLink.propTypes = propTypes;
+ElementLink.propTypes = ElementLinkPropTypes;
 
 ElementLink.defaultProps = {
   className: null,
-  internalUrl: null,
-  externalUrl: null,
-  anchorTagName: null
+  as: null,
+  target: null,
+  icon: null
 };
 
 export default ElementLink;

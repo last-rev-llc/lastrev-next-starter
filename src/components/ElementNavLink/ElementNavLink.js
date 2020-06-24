@@ -1,28 +1,52 @@
 import React from 'react';
-import propTypes from './ElementNavLink.propTypes';
+import PropTypes from 'prop-types';
 import styles from './ElementNavLink.module.scss';
-import ElementLink from '../ElementLink';
+import ElementLink, { ElementLinkPropTypes } from '../ElementLink';
+
+export const ElementNavLinkPropTypes = {
+  mainLink: PropTypes.shape(ElementLinkPropTypes).isRequired,
+  childrenLinks: PropTypes.arrayOf(PropTypes.shape({ ...ElementLinkPropTypes, id: PropTypes.string.isRequired }))
+};
 
 function ElementNavLink({ mainLink, childrenLinks }) {
+  const { isInternal, href, as, target, linkText, icon } = mainLink;
   return (
     <div data-testid="ElementNavLink">
       <div data-testid="ElementNavLink-mainLink" className={styles.mainNavLink}>
-        <ElementLink {...mainLink.fields} />
+        <ElementLink isInternal={isInternal} href={href} as={as} target={target} linkText={linkText} icon={icon} />
       </div>
       {childrenLinks && childrenLinks.length ? (
         <ul data-testid="ElementNavLink-childrenLinks" className={styles.childrenNavLinks}>
-          {childrenLinks.map((link) => (
-            <li key={link.sys.id}>
-              <ElementLink {...link.fields} />
-            </li>
-          ))}
+          {childrenLinks.map((link) => {
+            const {
+              id: childId,
+              isInternal: childIsInternal,
+              href: childHref,
+              as: childAs,
+              target: childTarget,
+              linkText: childLinkText,
+              icon: childIcon
+            } = link;
+            return (
+              <li key={childId}>
+                <ElementLink
+                  isInternal={childIsInternal}
+                  href={childHref}
+                  as={childAs}
+                  target={childTarget}
+                  linkText={childLinkText}
+                  icon={childIcon}
+                />
+              </li>
+            );
+          })}
         </ul>
       ) : null}
     </div>
   );
 }
 
-ElementNavLink.propTypes = propTypes;
+ElementNavLink.propTypes = ElementNavLinkPropTypes;
 
 ElementNavLink.defaultProps = {
   childrenLinks: null

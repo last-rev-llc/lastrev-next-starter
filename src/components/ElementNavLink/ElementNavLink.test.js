@@ -12,7 +12,7 @@ describe('<ElementNavLink />', () => {
     test('Main Nav Link is displayed', () => {
       const { mainLink } = mockContent;
       const { getByTestId } = render(<ElementNavLink mainLink={mainLink} />);
-      expect(getByTestId('ElementNavLink-mainLink').textContent).toBe(mainLink.fields.linkText);
+      expect(getByTestId('ElementNavLink-mainLink').textContent).toBe(mainLink.linkText);
     });
     test('No Children links ul is displayed if no children links exist', () => {
       const { mainLink } = mockContent;
@@ -24,9 +24,7 @@ describe('<ElementNavLink />', () => {
       const { queryByTestId } = render(<ElementNavLink mainLink={mainLink} childrenLinks={childrenLinks} />);
       expect(queryByTestId('ElementNavLink-childrenLinks')).not.toBe(null);
       expect(queryByTestId('ElementNavLink-childrenLinks').childNodes.length).toBe(childrenLinks.length);
-      expect(queryByTestId('ElementNavLink-childrenLinks').childNodes[0].textContent).toBe(
-        childrenLinks[0].fields.linkText
-      );
+      expect(queryByTestId('ElementNavLink-childrenLinks').childNodes[0].textContent).toBe(childrenLinks[0].linkText);
     });
   });
 });

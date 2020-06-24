@@ -25,11 +25,61 @@ const isAsset = (obj) => {
   return type === 'Asset';
 };
 
-const isInternalUrl = (fields, urlMap, contentTypeId) => {
-  return _.has(urlMap, contentTypeId) && _.has(fields, 'slug');
+const parseLink = ({ internalUrlActionText, externalUrlActionText, anchorLinkActionText, urlMap, fields }) => {
+  const { action, internalUrl, externalUrl, linkText, anchorTagName, icon } = fields;
+
+  let href;
+  let as;
+  let target;
+  let isInternal = false;
+
+  switch (action) {
+    case internalUrlActionText: {
+      if (!internalUrl) throw Error('internalUrl not selected', internalUrl);
+      const {
+        fields: { slug },
+        sys: {
+          contentType: {
+            sys: { id: contentTypeId }
+          }
+        }
+      } = internalUrl;
+      if (!_.has(urlMap, contentTypeId)) throw Error(`urlMap does not contain entry for ${contentTypeId}`);
+      ({ href, as } = getUrl(urlMap[contentTypeId], slug));
+      isInternal = true;
+      break;
+    }
+
+    case externalUrlActionText:
+      if (!externalUrl) throw Error('externalUrl empty', externalUrl);
+      href = externalUrl;
+      target = '_blank';
+      break;
+    case anchorLinkActionText:
+      if (!anchorTagName) throw Error('anchorTagName empty', anchorTagName);
+      href = `#${anchorTagName}`;
+      break;
+    default:
+      break;
+  }
+
+  return {
+    linkText,
+    isInternal,
+    href,
+    as,
+    target,
+    icon
+  };
 };
 
-const Adapter = ({ urlMap }) => (data) => {
+const Adapter = ({
+  urlMap,
+  linkContentType = 'elementLink',
+  internalUrlActionText = 'Go to Internal URL',
+  externalUrlActionText = 'Go to External URL',
+  anchorLinkActionText = 'Anchor Link'
+}) => (data) => {
   const traverse = (obj) => {
     if (_.isArray(obj)) {
       return _.map(obj, traverse);
@@ -46,9 +96,15 @@ const Adapter = ({ urlMap }) => (data) => {
           }
         } = obj;
         const url = {};
-        if (isInternalUrl(fields, urlMap, contentTypeId)) {
-          const { slug } = fields;
-          url.url = getUrl(urlMap[contentTypeId], slug);
+        if (contentTypeId === linkContentType) {
+          return parseLink({
+            internalUrlActionText,
+            externalUrlActionText,
+            anchorLinkActionText,
+            contentTypeId,
+            fields,
+            urlMap
+          });
         }
         const parsedFields = {};
         _.each(fields, (val, key) => {

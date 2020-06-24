@@ -1,25 +1,24 @@
 export const internalUrl = {
-  action: 'Go to Internal URL',
-  internalUrl: {
-    url: {
-      href: '/[slug]',
-      as: '/test'
-    }
-  },
+  isInternal: true,
+
+  href: '/[slug]',
+  as: '/test',
+
   linkText: 'My Page',
   icon: 'None'
 };
 
 export const externalUrl = {
-  action: 'Go to External URL',
+  isInternal: false,
   linkText: 'Last Rev',
-  externalUrl: 'http://www.lastrev.com',
+  href: 'http://www.lastrev.com',
+  target: '_blank',
   icon: 'None'
 };
 
 export const anchorTag = {
-  action: 'Anchor Link',
+  isInternal: false,
   linkText: 'Top',
-  anchorTagName: 'top',
+  href: '#top',
   icon: 'None'
 };

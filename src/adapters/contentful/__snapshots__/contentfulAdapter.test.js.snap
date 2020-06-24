@@ -4,146 +4,29 @@ exports[`Contentful Adapter converts the data correctly 1`] = `
 Object {
   "baselineCopyrightText": "University of Wisconsin Hospitals and Clinics Authority",
   "baselineCta": Object {
-    "action": "Go to Internal URL",
-    "contentTypeId": "uieCta",
+    "as": "/example",
+    "href": "/[slug]",
     "icon": "None",
-    "id": "2jWW2X94sAOjAuNlEx5inI",
-    "internalTitle": "Employee home access CTA",
-    "internalUrl": Object {
-      "contentSections": Array [
-        Object {
-          "sys": Object {
-            "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
-      ],
-      "contentTypeId": "pageGeneral",
-      "id": "39aUlWNjsXsuhFqzt6B5sL",
-      "internalTitle": "Example Page",
-      "pageTitle": "Example Page",
-      "seo": Object {
-        "description": Object {
-          "name": "description",
-          "value": "Example",
-        },
-        "keywords": Object {
-          "name": "keywords",
-          "value": "Example",
-        },
-        "robots": Object {
-          "name": "robots",
-          "value": "noindex,nofollow",
-        },
-        "title": Object {
-          "name": "title",
-          "value": "Example",
-        },
-      },
-      "slug": "example",
-      "url": Object {
-        "as": "/example",
-        "href": "/[slug]",
-      },
-    },
+    "isInternal": true,
     "linkText": "Employee home access",
-    "linkType": "Text Link",
+    "target": undefined,
   },
   "baselineMainLinks": Array [
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "2cZOce1hqvMk0uUX5Wltyb",
-      "internalTitle": "Terms and conditions CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Terms and conditions",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "1n5qvrIQKoYTBbIQSPmQVz",
-      "internalTitle": "Website privacy policy CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Website privacy policy",
-      "linkType": "Text Link",
+      "target": undefined,
     },
   ],
   "contentTypeId": "1234",
@@ -159,1253 +42,270 @@ Object {
   },
   "footerMainNavLinks": Array [
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "41M7Gn2RWo2CTx7M7N2uMS",
-      "internalTitle": "Find a provider CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Find a provider",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/conditionsandservices",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "HABlgG1SSNWo3rR4TG5EQ",
-      "internalTitle": "Conditions and services CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "7bTtcJG5aMA5iWnKzdkzDw",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "57I5pWHhU5NaYJrKPfTgRt",
-        "internalTitle": "Conditions and services Page",
-        "pageTitle": "Conditions and services",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "It really is about conditions and services",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Conditions and services",
-          },
-        },
-        "slug": "conditionsandservices",
-        "url": Object {
-          "as": "/conditionsandservices",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Conditions and services",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "7EklfHK0Hg80r8XnKGt0L2",
-      "internalTitle": "Locations and clinics CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Locations and clinics",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "3erYQE0IDykUNnMdFhoifI",
-      "internalTitle": "Patients and families CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Patients and families",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "ZNj4yCCjMchJdAO81LH1q",
-      "internalTitle": "Refer a patient CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Refer a patient",
-      "linkType": "Text Link",
+      "target": undefined,
     },
   ],
   "footerMainNavSecondaryLinksColumn2": Array [
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "3oKI1PsWZp2c9MIfmWp6Ob",
-      "internalTitle": "Careers CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Careers",
-      "linkType": "Text Link",
+      "target": undefined,
     },
   ],
   "footerSocialLinks": Array [
     Object {
-      "action": "Go to External URL",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://www.facebook.com/uwhealth",
+      "as": undefined,
+      "href": "https://www.facebook.com/uwhealth",
       "icon": "Facebook",
-      "id": "6pWJcgX8m8AJSaerIwhzUa",
-      "internalTitle": "Facebook social media CTA",
+      "isInternal": false,
       "linkText": "F",
-      "linkType": "Text Link",
+      "target": "_blank",
     },
     Object {
-      "action": "Go to External URL",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://twitter.com/uwhealth",
+      "as": undefined,
+      "href": "https://twitter.com/uwhealth",
       "icon": "Twitter",
-      "id": "61YRmPK0OWXShw5Y8iC6Vq",
-      "internalTitle": "Twitter social media CTA",
+      "isInternal": false,
       "linkText": "T",
-      "linkType": "Text Link",
+      "target": "_blank",
     },
     Object {
-      "action": "Go to External URL",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://www.pinterest.co.uk/uwhealth/",
+      "as": undefined,
+      "href": "https://www.pinterest.co.uk/uwhealth/",
       "icon": "Pinterest",
-      "id": "7EVixUH49cPpH55UKF9STM",
-      "internalTitle": "Pinterest social media CTA",
+      "isInternal": false,
       "linkText": "P",
-      "linkType": "Text Link",
+      "target": "_blank",
     },
     Object {
-      "action": "Go to External URL",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://www.instagram.com/uw_health/",
+      "as": undefined,
+      "href": "https://www.instagram.com/uw_health/",
       "icon": "Instagram",
-      "id": "2QQS3HFDkxEZSTHHk9hP14",
-      "internalTitle": "Instagram social media CTA",
+      "isInternal": false,
       "linkText": "I",
-      "linkType": "Text Link",
+      "target": "_blank",
     },
     Object {
-      "action": "Go to External URL",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://www.linkedin.com/company/uw-health",
+      "as": undefined,
+      "href": "https://www.linkedin.com/company/uw-health",
       "icon": "Linkedin",
-      "id": "37SQAoRR9kW7Qe9PVYPpXE",
-      "internalTitle": "LinkedIn social media CTA",
+      "isInternal": false,
       "linkText": "L",
-      "linkType": "Text Link",
+      "target": "_blank",
     },
     Object {
-      "action": "Go to External URL",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://www.youtube.com/user/UWHealthWI",
+      "as": undefined,
+      "href": "https://www.youtube.com/user/UWHealthWI",
       "icon": "None",
-      "id": "1DcUhxlWBx9Ns6wHj6OIuL",
-      "internalTitle": "Youtube social media CTA",
+      "isInternal": false,
       "linkText": "Y",
-      "linkType": "Text Link",
+      "target": "_blank",
     },
   ],
   "footerSubMainNav": Array [
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
-      "id": "2i9QT0XQHyn6tlAhcybWyq",
-      "internalTitle": "About UW Heath CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "as": "/example",
+      "href": "/[slug]",
+      "icon": undefined,
+      "isInternal": true,
       "linkText": "About UW Health",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
-      "id": "2c3IJz0FjHIiXE6XgjZ77v",
-      "internalTitle": "Diversity and Inclusion CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "as": "/example",
+      "href": "/[slug]",
+      "icon": undefined,
+      "isInternal": true,
       "linkText": "Diversity and Inclusion",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
-      "id": "w9BxN34mP2huY2hea3CG0",
-      "internalTitle": "Media Center",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "as": "/example",
+      "href": "/[slug]",
+      "icon": undefined,
+      "isInternal": true,
       "linkText": "Media Center",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
-      "id": "72Be9IFexTAP7XX9z1DPEc",
-      "internalTitle": "Contact Us",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "as": "/example",
+      "href": "/[slug]",
+      "icon": undefined,
+      "isInternal": true,
       "linkText": "Contact Us",
-      "linkType": "Text Link",
+      "target": undefined,
     },
   ],
   "footerSubNavCta": Object {
-    "action": "Go to Internal URL",
-    "contentTypeId": "uieCta",
+    "as": "/example",
+    "href": "/[slug]",
     "icon": "None",
-    "id": "1VdcY4KIwO3IpcuTrBl9Jq",
-    "internalTitle": "Make a donation CTA",
-    "internalUrl": Object {
-      "contentSections": Array [
-        Object {
-          "sys": Object {
-            "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
-      ],
-      "contentTypeId": "pageGeneral",
-      "id": "39aUlWNjsXsuhFqzt6B5sL",
-      "internalTitle": "Example Page",
-      "pageTitle": "Example Page",
-      "seo": Object {
-        "description": Object {
-          "name": "description",
-          "value": "Example",
-        },
-        "keywords": Object {
-          "name": "keywords",
-          "value": "Example",
-        },
-        "robots": Object {
-          "name": "robots",
-          "value": "noindex,nofollow",
-        },
-        "title": Object {
-          "name": "title",
-          "value": "Example",
-        },
-      },
-      "slug": "example",
-      "url": Object {
-        "as": "/example",
-        "href": "/[slug]",
-      },
-    },
+    "isInternal": true,
     "linkText": "Make a donation",
-    "linkType": "Text Link",
+    "target": undefined,
   },
   "footerSubNavLinks": Array [
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "6HHXF3MnDm6ghIlSRK9VJo",
-      "internalTitle": "Pay a bill CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Pay a bill",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "5lvOTzAq30C5SnsK4xZnug",
-      "internalTitle": "Refill a prescrition CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Refill a prescription",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "2eIbXTdPgubWtIl6mEKwct",
-      "internalTitle": "Order flower and gifts CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Order flower and gifts",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "7xf0maPnw9bQG6Ekq5QweR",
-      "internalTitle": "Send a greeting card CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Send a greeting card",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "2HViJdG1pn94n2r0przXtJ",
-      "internalTitle": "Find a support group CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Find a support group",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "1KjfSoBXdIoPLIiwaTBh3w",
-      "internalTitle": "News CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "News",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "4LFrAHLN6NtNajyGLZctDu",
-      "internalTitle": "Classes and events CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Classes and events",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "6LZEV2AKM4xppkSjSfAzN",
-      "internalTitle": "Health blogs CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Health blogs",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "34SiyXWAQnjJ5V0wjDXLOC",
-      "internalTitle": "Volunteering CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Volunteering",
-      "linkType": "Text Link",
+      "target": undefined,
     },
   ],
   "footerUtilityNavCta": Object {
-    "action": "Anchor Link",
-    "anchorTagName": "ullam sapiente commodi",
-    "contentTypeId": "uieCta",
-    "externalUrl": "https://melody.biz",
-    "id": "mock_UIE-CTA",
-    "internalTitle": " Mock UIE-CTA",
-    "internalUrl": Object {
-      "sys": Object {
-        "id": "mock_Page-GeneralForModuleCardGeneral",
-        "linkType": "Entry",
-        "type": "Link",
-      },
-    },
+    "as": undefined,
+    "href": "#ullam sapiente commodi",
+    "icon": undefined,
+    "isInternal": false,
     "linkText": "quis explicabo ratione",
-    "linkType": "Text",
-    "trackingId": "mollitia",
+    "target": undefined,
   },
   "footerUtilityNavLinks": Array [
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "7FyrEi4iQr8tankZyAwJ5R",
-      "internalTitle": "Video visits",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "Video visits",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "52h95tMKQscnNrhS00zdnQ",
-      "internalTitle": "OrthoCare Now CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "OrthoCare Now",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
+      "as": "/example",
+      "href": "/[slug]",
       "icon": "None",
-      "id": "7dkz2BmJthpeTCP1lNgdbs",
-      "internalTitle": "e-Visits CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "isInternal": true,
       "linkText": "e-Visits",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
-      "id": "2Sc78cVgdNc34JnXktlNqp",
-      "internalTitle": "Urgent Care CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "as": "/example",
+      "href": "/[slug]",
+      "icon": undefined,
+      "isInternal": true,
       "linkText": "Urgent Care",
-      "linkType": "Text Link",
+      "target": undefined,
     },
     Object {
-      "action": "Go to Internal URL",
-      "contentTypeId": "uieCta",
-      "id": "5NMyjBVPg3b7HOiEiWQjAU",
-      "internalTitle": "Emergency Care CTA",
-      "internalUrl": Object {
-        "contentSections": Array [
-          Object {
-            "sys": Object {
-              "id": "3vLWUrIT8VnP3FhdeBZL2Q",
-              "linkType": "Entry",
-              "type": "Link",
-            },
-          },
-        ],
-        "contentTypeId": "pageGeneral",
-        "id": "39aUlWNjsXsuhFqzt6B5sL",
-        "internalTitle": "Example Page",
-        "pageTitle": "Example Page",
-        "seo": Object {
-          "description": Object {
-            "name": "description",
-            "value": "Example",
-          },
-          "keywords": Object {
-            "name": "keywords",
-            "value": "Example",
-          },
-          "robots": Object {
-            "name": "robots",
-            "value": "noindex,nofollow",
-          },
-          "title": Object {
-            "name": "title",
-            "value": "Example",
-          },
-        },
-        "slug": "example",
-        "url": Object {
-          "as": "/example",
-          "href": "/[slug]",
-        },
-      },
+      "as": "/example",
+      "href": "/[slug]",
+      "icon": undefined,
+      "isInternal": true,
       "linkText": "Emergency Care",
-      "linkType": "Text Link",
+      "target": undefined,
     },
   ],
   "headerMainNavLinks": Array [
@@ -1414,22 +314,12 @@ Object {
       "id": "mock_settingsGlobal-baselineCta",
       "internalTitle": "Healthfacts - Nav Link",
       "mainLink": Object {
-        "action": "Anchor Link",
-        "anchorTagName": "ullam sapiente commodi",
-        "contentTypeId": "uieCta",
-        "externalUrl": "https://melody.biz",
-        "id": "mock_UIE-CTA",
-        "internalTitle": " Mock UIE-CTA",
-        "internalUrl": Object {
-          "sys": Object {
-            "id": "mock_Page-GeneralForModuleCardGeneral",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
+        "as": undefined,
+        "href": "#ullam sapiente commodi",
+        "icon": undefined,
+        "isInternal": false,
         "linkText": "quis explicabo ratione",
-        "linkType": "Text",
-        "trackingId": "mollitia",
+        "target": undefined,
       },
     },
     Object {
@@ -1437,22 +327,12 @@ Object {
       "id": "mock_settingsGlobal-baselineMainLinks",
       "internalTitle": "Healthwise - Nav Link",
       "mainLink": Object {
-        "action": "Anchor Link",
-        "anchorTagName": "ullam sapiente commodi",
-        "contentTypeId": "uieCta",
-        "externalUrl": "https://melody.biz",
-        "id": "mock_UIE-CTA",
-        "internalTitle": " Mock UIE-CTA",
-        "internalUrl": Object {
-          "sys": Object {
-            "id": "mock_Page-GeneralForModuleCardGeneral",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
+        "as": undefined,
+        "href": "#ullam sapiente commodi",
+        "icon": undefined,
+        "isInternal": false,
         "linkText": "quis explicabo ratione",
-        "linkType": "Text",
-        "trackingId": "mollitia",
+        "target": undefined,
       },
     },
     Object {
@@ -1460,22 +340,12 @@ Object {
       "id": "mock_Element-NavLink",
       "internalTitle": "Kids Health - Nav Link",
       "mainLink": Object {
-        "action": "Anchor Link",
-        "anchorTagName": "ullam sapiente commodi",
-        "contentTypeId": "uieCta",
-        "externalUrl": "https://melody.biz",
-        "id": "mock_UIE-CTA",
-        "internalTitle": " Mock UIE-CTA",
-        "internalUrl": Object {
-          "sys": Object {
-            "id": "mock_Page-GeneralForModuleCardGeneral",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
+        "as": undefined,
+        "href": "#ullam sapiente commodi",
+        "icon": undefined,
+        "isInternal": false,
         "linkText": "quis explicabo ratione",
-        "linkType": "Text",
-        "trackingId": "mollitia",
+        "target": undefined,
       },
     },
   ],
@@ -1492,44 +362,24 @@ Object {
   "headerMainNavSecondaryLink": Object {
     "childrenLinks": Array [
       Object {
-        "action": "Anchor Link",
-        "anchorTagName": "ullam sapiente commodi",
-        "contentTypeId": "uieCta",
-        "externalUrl": "https://melody.biz",
-        "id": "mock_UIE-CTA",
-        "internalTitle": " Mock UIE-CTA",
-        "internalUrl": Object {
-          "sys": Object {
-            "id": "mock_Page-GeneralForModuleCardGeneral",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
+        "as": undefined,
+        "href": "#ullam sapiente commodi",
+        "icon": undefined,
+        "isInternal": false,
         "linkText": "quis explicabo ratione",
-        "linkType": "Text",
-        "trackingId": "mollitia",
+        "target": undefined,
       },
     ],
     "contentTypeId": "elementNavLink",
     "id": "mock_settingsGlobal-headerMainNavSecondaryLink",
     "internalTitle": "Mock headerMainNavSecondaryLink for Settings - Global",
     "mainLink": Object {
-      "action": "Anchor Link",
-      "anchorTagName": "ullam sapiente commodi",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://melody.biz",
-      "id": "mock_UIE-CTA",
-      "internalTitle": " Mock UIE-CTA",
-      "internalUrl": Object {
-        "sys": Object {
-          "id": "mock_Page-GeneralForModuleCardGeneral",
-          "linkType": "Entry",
-          "type": "Link",
-        },
-      },
+      "as": undefined,
+      "href": "#ullam sapiente commodi",
+      "icon": undefined,
+      "isInternal": false,
       "linkText": "quis explicabo ratione",
-      "linkType": "Text",
-      "trackingId": "mollitia",
+      "target": undefined,
     },
   },
   "headerSearchErrorMessage": "There was an error",
@@ -1540,22 +390,12 @@ Object {
       "id": "mock_settingsGlobal-baselineCta",
       "internalTitle": "Healthfacts - Nav Link",
       "mainLink": Object {
-        "action": "Anchor Link",
-        "anchorTagName": "ullam sapiente commodi",
-        "contentTypeId": "uieCta",
-        "externalUrl": "https://melody.biz",
-        "id": "mock_UIE-CTA",
-        "internalTitle": " Mock UIE-CTA",
-        "internalUrl": Object {
-          "sys": Object {
-            "id": "mock_Page-GeneralForModuleCardGeneral",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
+        "as": undefined,
+        "href": "#ullam sapiente commodi",
+        "icon": undefined,
+        "isInternal": false,
         "linkText": "quis explicabo ratione",
-        "linkType": "Text",
-        "trackingId": "mollitia",
+        "target": undefined,
       },
     },
     Object {
@@ -1563,22 +403,12 @@ Object {
       "id": "mock_settingsGlobal-baselineMainLinks",
       "internalTitle": "Healthwise - Nav Link",
       "mainLink": Object {
-        "action": "Anchor Link",
-        "anchorTagName": "ullam sapiente commodi",
-        "contentTypeId": "uieCta",
-        "externalUrl": "https://melody.biz",
-        "id": "mock_UIE-CTA",
-        "internalTitle": " Mock UIE-CTA",
-        "internalUrl": Object {
-          "sys": Object {
-            "id": "mock_Page-GeneralForModuleCardGeneral",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
+        "as": undefined,
+        "href": "#ullam sapiente commodi",
+        "icon": undefined,
+        "isInternal": false,
         "linkText": "quis explicabo ratione",
-        "linkType": "Text",
-        "trackingId": "mollitia",
+        "target": undefined,
       },
     },
     Object {
@@ -1586,22 +416,12 @@ Object {
       "id": "mock_Element-NavLink",
       "internalTitle": "Kids Health - Nav Link",
       "mainLink": Object {
-        "action": "Anchor Link",
-        "anchorTagName": "ullam sapiente commodi",
-        "contentTypeId": "uieCta",
-        "externalUrl": "https://melody.biz",
-        "id": "mock_UIE-CTA",
-        "internalTitle": " Mock UIE-CTA",
-        "internalUrl": Object {
-          "sys": Object {
-            "id": "mock_Page-GeneralForModuleCardGeneral",
-            "linkType": "Entry",
-            "type": "Link",
-          },
-        },
+        "as": undefined,
+        "href": "#ullam sapiente commodi",
+        "icon": undefined,
+        "isInternal": false,
         "linkText": "quis explicabo ratione",
-        "linkType": "Text",
-        "trackingId": "mollitia",
+        "target": undefined,
       },
     },
   ],
@@ -1610,22 +430,12 @@ Object {
     "id": "mock_settingsGlobal-headerUtilityNavSiteNameLink",
     "internalTitle": "Mock headerUtilityNavSiteNameLink for Settings - Global",
     "mainLink": Object {
-      "action": "Anchor Link",
-      "anchorTagName": "ullam sapiente commodi",
-      "contentTypeId": "uieCta",
-      "externalUrl": "https://melody.biz",
-      "id": "mock_UIE-CTA",
-      "internalTitle": " Mock UIE-CTA",
-      "internalUrl": Object {
-        "sys": Object {
-          "id": "mock_Page-GeneralForModuleCardGeneral",
-          "linkType": "Entry",
-          "type": "Link",
-        },
-      },
+      "as": undefined,
+      "href": "#ullam sapiente commodi",
+      "icon": undefined,
+      "isInternal": false,
       "linkText": "quis explicabo ratione",
-      "linkType": "Text",
-      "trackingId": "mollitia",
+      "target": undefined,
     },
   },
   "id": "2345",

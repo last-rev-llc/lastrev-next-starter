@@ -77,14 +77,6 @@ export default {
           fields: {
             internalTitle: ' Mock UIE-CTA',
             action: 'Anchor Link',
-            internalUrl: {
-              sys: {
-                type: 'Link',
-                linkType: 'Entry',
-                id: 'mock_Page-GeneralForModuleCardGeneral'
-              }
-            },
-            externalUrl: 'https://melody.biz',
             anchorTagName: 'ullam sapiente commodi',
             linkText: 'quis explicabo ratione',
             linkType: 'Text',
