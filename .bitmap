@@ -48,17 +48,12 @@
             },
             {
                 "relativePath": "src/components/ElementLink/ElementLink.mock.js",
-                "test": false,
+                "test": true,
                 "name": "ElementLink.mock.js"
             },
             {
-                "relativePath": "src/components/ElementLink/ElementLink.story.js",
-                "test": false,
-                "name": "ElementLink.story.js"
-            },
-            {
                 "relativePath": "src/components/ElementLink/ElementLink.test.js",
-                "test": false,
+                "test": true,
                 "name": "ElementLink.test.js"
             },
             {
@@ -73,7 +68,6 @@
             }
         ],
         "mainFile": "src/components/ElementLink/index.js",
-        "trackDir": "src/components/ElementLink",
         "origin": "AUTHORED",
         "exported": true
     },
