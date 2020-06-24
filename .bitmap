@@ -65,5 +65,28 @@
         "origin": "AUTHORED",
         "exported": true
     },
+    "lastrev.components/preview-wrapper@0.0.1": {
+        "files": [
+            {
+                "relativePath": "src/components/PreviewWrapper/PreviewWrapper.js",
+                "test": false,
+                "name": "PreviewWrapper.js"
+            },
+            {
+                "relativePath": "src/components/PreviewWrapper/README.md",
+                "test": false,
+                "name": "README.md"
+            },
+            {
+                "relativePath": "src/components/PreviewWrapper/index.js",
+                "test": false,
+                "name": "index.js"
+            }
+        ],
+        "mainFile": "src/components/PreviewWrapper/index.js",
+        "trackDir": "src/components/PreviewWrapper",
+        "origin": "AUTHORED",
+        "exported": true
+    },
     "version": "14.7.6"
 }
