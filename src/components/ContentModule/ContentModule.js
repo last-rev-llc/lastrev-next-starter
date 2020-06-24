@@ -1,20 +1,18 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import propTypes from './ContentModule.propTypes';
-import styles from './ContentModule.module.scss';
-import mockContent from './ContentModule.mock';
+import PropTypes from 'prop-types';
 
-function ContentModule({ header }) {
-  return (
-    <div data-testid="ContentModule">
-      <h1 className={styles.header} data-testid="ContentModule-header">
-        {header}
-      </h1>
-    </div>
-  );
-}
+export const ContentModulePropTypes = {
+  contentTypeId: PropTypes.string.isRequired,
+  moduleLookup: PropTypes.func.isRequired
+};
 
-ContentModule.propTypes = propTypes;
+const ContentModule = ({ contentTypeId, moduleLookup, ...fields }) => {
+  const Main = moduleLookup(contentTypeId);
 
-ContentModule.defaultProps = mockContent;
+  return <Main {...fields} />;
+};
+
+ContentModule.propTypes = ContentModulePropTypes;
 
 export default ContentModule;

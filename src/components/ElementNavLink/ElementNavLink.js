@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ElementLink, { ElementLinkPropTypes } from '@components/ElementLink';
 import styles from './ElementNavLink.module.scss';
-import ElementLink, { ElementLinkPropTypes } from '../ElementLink';
 
 export const ElementNavLinkPropTypes = {
   mainLink: PropTypes.shape(ElementLinkPropTypes).isRequired,

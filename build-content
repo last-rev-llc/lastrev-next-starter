@@ -15,6 +15,7 @@ const writeFile = promisify(w);
 const CONTENT_DIR = './content-cache';
 const PATHS_JSON_FILE = join(CONTENT_DIR, 'paths.json');
 const SETTINGS_JSON_FILE = join(CONTENT_DIR, 'settings.json');
+const URL_MAP_JSON_FILE = join(CONTENT_DIR, 'urlmap.json');
 const PAGE_GENERAL = 'pageGeneral';
 
 const mkdirIfNotExists = async () => {
@@ -34,6 +35,21 @@ const writeSettingsJson = async (globalSettings) => {
   writeFile(SETTINGS_JSON_FILE, out);
 };
 
+// TODO: this should be dynamic, based on taxonomy content model
+const writeUrlMapJson = async () => {
+  const urlMap = JSON.stringify(
+    {
+      pageGeneral: {
+        url: '/[key]',
+        key: 'slug'
+      }
+    },
+    null,
+    2
+  );
+  writeFile(URL_MAP_JSON_FILE, urlMap);
+};
+
 const build = async () => {
   await mkdirIfNotExists();
 
@@ -42,7 +58,7 @@ const build = async () => {
     getGlobalSettings()
   ]);
 
-  await Promise.all([writePathsJson({ pageGeneralSlugs }), writeSettingsJson(globalSettings)]);
+  await Promise.all([writePathsJson({ pageGeneralSlugs }), writeSettingsJson(globalSettings), writeUrlMapJson()]);
 };
 
 build()

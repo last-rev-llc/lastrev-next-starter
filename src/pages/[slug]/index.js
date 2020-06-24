@@ -1,18 +1,25 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { getPageBySlug } from '../../integrations/contentful';
-import Layout from '../../components/Layout';
-import PageGeneral from '../../components/PageGeneral';
-import Adapter from '../../adapters/contentful';
+import lookupComponentByContentType from '@utils/lookupComponentByContentType';
+import { getPageBySlug } from '@integrations/contentful';
+import Layout from '@components/Layout';
+import PageGeneral from '@components/PageGeneral';
+import Adapter from '@adapters/contentful';
 
 const { '/': paths } = require('../../../content-cache/paths.json');
 const settingsGlobal = require('../../../content-cache/settings.json');
+const urlMap = require('../../../content-cache/urlmap.json');
 
 const CONTENT_TYPE = 'pageGeneral';
 
+// eslint-disable-next-line no-shadow
 const DynamicGeneralPage = ({ settingsGlobal, pageData }) => {
   return (
     <Layout settingsGlobal={settingsGlobal}>
-      <PageGeneral {...pageData.fields} />
+      <PageGeneral {...pageData} mooduleLookup={lookupComponentByContentType} />
     </Layout>
   );
 };
@@ -29,20 +36,11 @@ export const getStaticProps = async ({ params }) => {
   const { slug } = params;
   const pageData = await getPageBySlug(slug, CONTENT_TYPE);
 
-  // TODO: This should be created by build script
-  const urlMap = {
-    pageGeneral: {
-      url: '/[key]',
-      key: 'slug'
-    }
-  };
-
   const transform = Adapter({ urlMap });
 
   return {
     props: {
       pageData: transform(pageData),
-      // already transformed in build files
       settingsGlobal: transform(settingsGlobal)
     }
   };

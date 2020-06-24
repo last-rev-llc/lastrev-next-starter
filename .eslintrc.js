@@ -24,8 +24,17 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      node: {
+      'node': {
         moduleDirectory: ['node_modules', '.']
+      },
+      'babel-module': {
+        root: ['.'],
+        alias: {
+          '@utils': './src/utils',
+          '@components': './src/components',
+          '@adapters': './src/adapters',
+          '@integrations': './src/integrations'
+        }
       }
     }
   }
