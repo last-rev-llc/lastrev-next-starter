@@ -84,7 +84,8 @@
   },
   "bit": {
     "env": {
-      "compiler": "lastrev.compilers/bundlers/webpack@4.0.5"
+      "compiler": "lastrev.compilers/bundlers/webpack@4.0.5",
+      "tester": "bit.envs/testers/jest@22.4.3"
     },
     "componentsDefaultDirectory": "components/{name}",
     "packageManager": "npm"

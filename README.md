@@ -1,32 +1,63 @@
 # Using bit.dev
 
-- Best practices for creating reusable components: https://github.com/Tallyb/reusable-components-styleguide
+## Best Practices
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Best practices for creating reusable components: https://github.com/Tallyb/reusable-components-styleguide
 
-## Getting Started
+## Adding a component
 
-First, run the development server:
+1. Always add components bottoms-up, meaning that if there are dependencies on other components, add those first
+2. Check package.json and verify that all dependencies that are expected to be used in the consuming app (such as next.js and react.js) are listed as peer dependencies. You can add them in as dev dependincies as well so that they will be installed when running `npm install`.
+3. If one does not already exist, create a `README.md` file. This file should, at aminimum, explain what the component does, and list the properties of the component (name, required, type)
+4. If you have not already done so, install the bit cli:
 
 ```bash
-npm start
+npm install bit-bin -g
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Add the component (this is a work in progress until I can figure out a better way of doing this). You want to add the component directory, while excluding story files or anything else not needed, and letting bit know which file is the tests file:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+bit add src/components/Foo --exclude src/components/Foo/Foo.story.js --tests src/components/Foo/Foo.test.js
+```
 
-## Learn More
+6. Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+bit build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+7. tag it
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+bit tag --all 0.0.1
+```
 
-## Deploy on Vercel
+8. export it. You will want to export to the proper collection, based on what type of module it is.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+bit export lastrev.components
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Making changes to components
+
+Once a component is in bit.dev, you can make changes and update the version with the following steps
+
+1. Make the necessary changes
+2. run the tests
+
+```bash
+bit test lastrev.components/foo
+```
+
+3. Tag the component. This will auto increment the patch version.
+
+```bash
+bit tag lastrev.components/foo
+```
+
+4. Export it
+
+```bash
+bit export
+```
