@@ -36,7 +36,6 @@
     "sass": "^1.26.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.0",
     "@storybook/addon-actions": "^5.3.18",

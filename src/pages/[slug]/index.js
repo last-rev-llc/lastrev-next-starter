@@ -4,14 +4,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import lookupComponentByContentType from '@utils/lookupComponentByContentType';
-import { getPageBySlug } from '@integrations/contentful';
+import Contentful from '@integrations/contentful';
 import Layout from '@components/Layout';
 import PageGeneral from '@components/PageGeneral';
-import Adapter from '@adapters/contentful';
+import config from '../../config';
+
+const { getPageBySlug } = Contentful(config);
 
 const { '/': paths } = require('../../../content-cache/paths.json');
 const settingsGlobal = require('../../../content-cache/settings.json');
-const urlMap = require('../../../content-cache/urlmap.json');
 
 const CONTENT_TYPE = 'pageGeneral';
 
@@ -36,12 +37,10 @@ export const getStaticProps = async ({ params }) => {
   const { slug } = params;
   const pageData = await getPageBySlug(slug, CONTENT_TYPE);
 
-  const transform = Adapter({ urlMap });
-
   return {
     props: {
-      pageData: transform(pageData),
-      settingsGlobal: transform(settingsGlobal)
+      pageData,
+      settingsGlobal
     }
   };
 };

@@ -6,7 +6,20 @@ const { promisify } = require('util');
 const { exists: e, mkdir: m, writeFile: w } = require('fs');
 const { join } = require('path');
 
-const { getStaticSlugsForContentType, getGlobalSettings } = require('./src/integrations/contentful');
+const Contentful = require('./dist/src/integrations/contentful');
+
+const urlMap = JSON.stringify(
+  {
+    pageGeneral: {
+      url: '/[key]',
+      key: 'slug'
+    }
+  },
+  null,
+  2
+);
+
+const { getStaticSlugsForContentType, getGlobalSettings } = Contentful({ urlMap });
 
 const exists = promisify(e);
 const mkdir = promisify(m);
@@ -37,16 +50,6 @@ const writeSettingsJson = async (globalSettings) => {
 
 // TODO: this should be dynamic, based on taxonomy content model
 const writeUrlMapJson = async () => {
-  const urlMap = JSON.stringify(
-    {
-      pageGeneral: {
-        url: '/[key]',
-        key: 'slug'
-      }
-    },
-    null,
-    2
-  );
   writeFile(URL_MAP_JSON_FILE, urlMap);
 };
 
