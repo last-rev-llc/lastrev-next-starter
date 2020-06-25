@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import ElementLink from './ElementLink';
 import { internalUrl, externalUrl, anchorTag } from './ElementLink.mock';
 
@@ -8,31 +8,39 @@ export default {
   decorators: [withKnobs]
 };
 
-const actionChoices = ['Go to Internal URL', 'Go to External URL', 'Anchor Tag'];
-
-const iconChoices = ['None', 'Profile', 'Map Marker', 'Phone'];
-
 export const internalUrlLink = () => (
   <ElementLink
-    action={select('action', actionChoices, internalUrl.action)}
-    internalUrl={internalUrl.internalUrl}
+    isInternal
+    href={internalUrl.href}
+    as={internalUrl.as}
     linkText={text('linkText', internalUrl.linkText)}
-    icon={select('icon', iconChoices, internalUrl.icon)}
+    icon={text('icon', internalUrl.icon)}
+    isModal={boolean('isModal', internalUrl.isModal)}
+    isDownload={boolean('isDownload', internalUrl.isDownload)}
+    style={text('style', internalUrl.style)}
   />
 );
 export const externalUrlLink = () => (
   <ElementLink
-    action={select('action', actionChoices, externalUrl.action)}
-    externalUrl={text('externalUrl', externalUrl.externalUrl)}
+    isInternal={false}
+    href={externalUrl.href}
+    as={externalUrl.as}
     linkText={text('linkText', externalUrl.linkText)}
-    icon={select('icon', iconChoices, externalUrl.icon)}
+    icon={text('icon', externalUrl.icon)}
+    isModal={boolean('isModal', externalUrl.isModal)}
+    isDownload={boolean('isDownload', externalUrl.isDownload)}
+    style={text('style', externalUrl.style)}
   />
 );
 export const anchorTagLink = () => (
   <ElementLink
-    action={select('action', actionChoices, anchorTag.action)}
-    anchorTagName={text('anchorTagName', anchorTag.anchorTagName)}
+    isInternal={false}
+    href={anchorTag.href}
+    as={anchorTag.as}
     linkText={text('linkText', anchorTag.linkText)}
-    icon={select('icon', iconChoices, anchorTag.icon)}
+    icon={text('icon', anchorTag.icon)}
+    isModal={boolean('isModal', anchorTag.isModal)}
+    isDownload={boolean('isDownload', anchorTag.isDownload)}
+    style={text('style', anchorTag.style)}
   />
 );

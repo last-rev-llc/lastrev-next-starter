@@ -5,7 +5,11 @@ export const internalUrl = {
   as: '/test',
 
   linkText: 'My Page',
-  icon: 'None'
+  icon: 'phone',
+  style: 'dark',
+  isModal: false,
+  isDownload: false,
+  trackingId: null
 };
 
 export const externalUrl = {
@@ -13,12 +17,18 @@ export const externalUrl = {
   linkText: 'Last Rev',
   href: 'http://www.lastrev.com',
   target: '_blank',
-  icon: 'None'
+  style: null,
+  isModal: false,
+  isDownload: false,
+  trackingId: null
 };
 
 export const anchorTag = {
   isInternal: false,
   linkText: 'Top',
   href: '#top',
-  icon: 'None'
+  style: null,
+  isModal: false,
+  isDownload: false,
+  trackingId: null
 };

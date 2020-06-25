@@ -12,26 +12,50 @@ export const ElementLinkPropTypes = {
   as: PropTypes.string,
   linkText: PropTypes.string.isRequired,
   icon: PropTypes.string,
-  target: PropTypes.string
+  target: PropTypes.string,
+  isModal: PropTypes.bool.isRequired,
+  isDownload: PropTypes.bool.isRequired,
+  trackingId: PropTypes.string,
+  style: PropTypes.string
 };
 
 const internalLinkPropTypes = {
   href: PropTypes.string.isRequired,
-  as: PropTypes.string.isRequired,
+  as: PropTypes.string,
   className: PropTypes.string,
-  linkText: PropTypes.string.isRequired
+  linkText: PropTypes.string.isRequired,
+  trackingId: PropTypes.string
 };
 
 const standardLinkPropTypes = {
   href: PropTypes.string.isRequired,
   target: PropTypes.string,
   className: PropTypes.string,
-  linkText: PropTypes.string.isRequired
+  linkText: PropTypes.string.isRequired,
+  isModal: PropTypes.bool.isRequired,
+  isDownload: PropTypes.bool.isRequired,
+  trackingId: PropTypes.string
 };
 
-const StandardLink = ({ target, href, className, linkText }) => {
+const StandardLink = ({ target, href, className, linkText, isModal, isDownload, trackingId }) => {
+  let onClick = null;
+
+  if (isModal) {
+    onClick = () => {
+      // TODO: handle opening modal
+    };
+  }
+
   return (
-    <a className={className} href={href} target={target} rel="noopener noreferrer" data-testid="ElementLink">
+    <a
+      data-trackingid={trackingId}
+      onClick={onClick}
+      className={className}
+      href={href}
+      target={target}
+      rel="noopener noreferrer"
+      data-testid="ElementLink"
+      download={isDownload}>
       {linkText}
     </a>
   );
@@ -41,13 +65,14 @@ StandardLink.propTypes = standardLinkPropTypes;
 
 StandardLink.defaultProps = {
   className: null,
-  target: null
+  target: null,
+  trackingId: null
 };
 
-const InternalLink = ({ href, as, className, linkText }) => {
+const InternalLink = ({ href, as, className, linkText, trackingId }) => {
   return (
     <NextLink href={href} as={as}>
-      <a className={className} data-testid="ElementLink">
+      <a className={className} data-testid="ElementLink" data-trackingid={trackingId}>
         {linkText}
       </a>
     </NextLink>
@@ -57,22 +82,45 @@ const InternalLink = ({ href, as, className, linkText }) => {
 InternalLink.propTypes = internalLinkPropTypes;
 
 InternalLink.defaultProps = {
-  className: null
+  className: null,
+  as: null,
+  trackingId: null
 };
 
-const getFullClassName = ({ className, icon }) => {
-  if (!className && !icon) return null;
-  return `${className || ''} icon_${_.snakeCase(icon)}`;
+const getFullClassName = ({ style, className, icon }) => {
+  if (!style && !className && !icon) return null;
+  return `${style ? `link_${style}` : ''} ${className || ''} ${icon ? `icon_${_.snakeCase(icon)}` : ''}`;
 };
 
-function ElementLink({ className, isInternal, href, as, target, linkText, icon }) {
-  const fullClassName = getFullClassName({ className, icon });
+function ElementLink({
+  className,
+  isInternal,
+  href,
+  as,
+  target,
+  linkText,
+  icon,
+  isModal,
+  isDownload,
+  trackingId,
+  style
+}) {
+  const fullClassName = getFullClassName({ style, className, icon });
 
   if (isInternal) {
-    if (!as) throw Error('"as" property not defined');
-    return <InternalLink href={href} as={as} className={fullClassName} linkText={linkText} />;
+    return <InternalLink href={href} as={as} className={fullClassName} linkText={linkText} trackingId={trackingId} />;
   }
-  return <StandardLink target={target} href={href} className={fullClassName} linkText={linkText} />;
+  return (
+    <StandardLink
+      target={target}
+      href={href}
+      className={fullClassName}
+      linkText={linkText}
+      isModal={isModal}
+      isDownload={isDownload}
+      trackingId={trackingId}
+    />
+  );
 }
 
 ElementLink.propTypes = ElementLinkPropTypes;
@@ -81,7 +129,9 @@ ElementLink.defaultProps = {
   className: null,
   as: null,
   target: null,
-  icon: null
+  icon: null,
+  trackingId: null,
+  style: null
 };
 
 export default ElementLink;

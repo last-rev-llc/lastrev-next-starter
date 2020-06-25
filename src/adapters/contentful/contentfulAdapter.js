@@ -76,9 +76,13 @@ const parseLink = ({ internalUrlActionText, externalUrlActionText, anchorLinkAct
 const Adapter = ({
   urlMap,
   linkContentType = 'elementLink',
-  internalUrlActionText = 'Go to Internal URL',
-  externalUrlActionText = 'Go to External URL',
-  anchorLinkActionText = 'Anchor Link'
+  sameWindowActionText = 'Open in the same window',
+  newWindowActionText = 'Open in a new window',
+  modalActionText = 'Open in a modal',
+  downloadActionText = 'Download',
+  manualEntryTypeText = 'Manual text entry',
+  contentRefTypeText = 'Content reference',
+  assetRefTypeText = 'Asset reference'
 }) => (data) => {
   const traverse = (obj) => {
     if (_.isArray(obj)) {

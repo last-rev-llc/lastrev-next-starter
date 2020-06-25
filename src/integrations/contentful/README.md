@@ -6,10 +6,11 @@ This module provides a set of useful cuntions for querying data from Contentful,
 
 This module expects the following environment variables:
 
-- `CONTENTFUL_SPACE_ID`
-- `CONTENTFUL_ENV`
-- `CONTENTFUL_ACCESSTOKEN`
-- `CONTENTFUL_HOST`
+- `CONTENTFUL_SPACE_ID` = The spaceId from contentful
+- `CONTENTFUL_ENV` - Contentful environment
+- `CONTENTFUL_ACCESSTOKEN` - Contentful API access token
+- `CONTENTFUL_HOST` - Contentful Host
+- `CONTENTFUL_SETTINGS_ID` - The ID of the `settingsGlobal` content item to use
 
 ## usage
 

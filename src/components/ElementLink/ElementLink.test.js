@@ -17,7 +17,8 @@ afterEach(() => {
 describe('<ElementLink />', () => {
   test('a tag has correct class attribute', () => {
     const testClassName = 'testClass';
-    const expectedClass = `${testClassName} icon_${_.snakeCase(internalUrl.icon)}`;
+    const expectedClass = `link_${internalUrl.style} ${testClassName} icon_${_.snakeCase(internalUrl.icon)}`;
+
     const { getByTestId } = render(
       <ElementLink
         className={testClassName}
@@ -26,24 +27,12 @@ describe('<ElementLink />', () => {
         as={internalUrl.as}
         linkText={internalUrl.linkText}
         icon={internalUrl.icon}
+        style={internalUrl.style}
       />
     );
     expect(getByTestId('ElementLink').getAttribute('class')).toBe(expectedClass);
   });
   describe('<ElementLink /> isInternal', () => {
-    test('throws error if as is undefined', () => {
-      expect(() => {
-        render(
-          <ElementLink
-            isInternal={internalUrl.isInternal}
-            href={internalUrl.href}
-            linkText={internalUrl.linkText}
-            icon={internalUrl.icon}
-          />
-        );
-      }).toThrow('"as" property not defined');
-    });
-
     test('href is /[slug] for pageGeneral', () => {
       const { getByTestId } = render(
         <ElementLink
@@ -52,10 +41,29 @@ describe('<ElementLink />', () => {
           as={internalUrl.as}
           linkText={internalUrl.linkText}
           icon={internalUrl.icon}
+          isModal={internalUrl.isModal}
+          isDownload={internalUrl.isDownload}
+          trackingId={internalUrl.trackingId}
         />
       );
 
       expect(getByTestId('ElementLink').getAttribute('href')).toBe(internalUrl.as);
+    });
+    test('trackingId renders correctly', () => {
+      const trackingId = 'testid';
+      const { getByTestId } = render(
+        <ElementLink
+          isInternal={internalUrl.isInternal}
+          href={internalUrl.href}
+          linkText={internalUrl.linkText}
+          target={internalUrl.target}
+          icon={internalUrl.icon}
+          isModal={internalUrl.isModal}
+          isDownload={internalUrl.isDownload}
+          trackingId={trackingId}
+        />
+      );
+      expect(getByTestId('ElementLink').getAttribute('data-trackingid')).toBe(trackingId);
     });
   });
 
@@ -68,10 +76,29 @@ describe('<ElementLink />', () => {
           linkText={externalUrl.linkText}
           target={externalUrl.target}
           icon={externalUrl.icon}
+          isModal={externalUrl.isModal}
+          isDownload={externalUrl.isDownload}
+          trackingId={externalUrl.trackingId}
         />
       );
       expect(getByTestId('ElementLink').getAttribute('href')).toBe(externalUrl.href);
       expect(getByTestId('ElementLink').getAttribute('target')).toBe(externalUrl.target);
+    });
+    test('trackingId renders correctly', () => {
+      const trackingId = 'testid';
+      const { getByTestId } = render(
+        <ElementLink
+          isInternal={externalUrl.isInternal}
+          href={externalUrl.href}
+          linkText={externalUrl.linkText}
+          target={externalUrl.target}
+          icon={externalUrl.icon}
+          isModal={internalUrl.isModal}
+          isDownload={internalUrl.isDownload}
+          trackingId={trackingId}
+        />
+      );
+      expect(getByTestId('ElementLink').getAttribute('data-trackingid')).toBe(trackingId);
     });
   });
 
@@ -83,9 +110,27 @@ describe('<ElementLink />', () => {
           href={anchorTag.href}
           linkText={anchorTag.linkText}
           icon={anchorTag.icon}
+          isModal={false}
+          isDownload={false}
         />
       );
       expect(getByTestId('ElementLink').getAttribute('href')).toBe(anchorTag.href);
+    });
+    test('trackingId renders correctly', () => {
+      const trackingId = 'testid';
+      const { getByTestId } = render(
+        <ElementLink
+          isInternal={anchorTag.isInternal}
+          href={anchorTag.href}
+          linkText={anchorTag.linkText}
+          target={anchorTag.target}
+          icon={anchorTag.icon}
+          isModal={anchorTag.isModal}
+          isDownload={anchorTag.isDownload}
+          trackingId={trackingId}
+        />
+      );
+      expect(getByTestId('ElementLink').getAttribute('data-trackingid')).toBe(trackingId);
     });
   });
 });

@@ -1,13 +1,13 @@
 // eslint-disable-next-line import/no-self-import
-const contentful = require('contentful');
-const _ = require('lodash');
-const Adapter = require('../../adapters/contentful').default;
+import { createClient } from 'contentful';
+import _ from 'lodash';
+import Adapter from '../../adapters/contentful';
 
 const removeCircularRefs = (entries) => {
   return JSON.parse(entries.stringifySafe());
 };
 
-const client = contentful.createClient({
+const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   environment: process.env.CONTENTFUL_ENV || 'master',
   accessToken: process.env.CONTENTFUL_ACCESSTOKEN,
@@ -18,7 +18,7 @@ const noop = (data) => {
   return data;
 };
 
-const getPageBySlug = async (slug, contentType, transform = noop) => {
+export const getPageBySlug = async (slug, contentType, transform = noop) => {
   try {
     const entries = await client.getEntries({
       'content_type': contentType,
@@ -32,7 +32,7 @@ const getPageBySlug = async (slug, contentType, transform = noop) => {
   return null;
 };
 
-const getFullContentById = async (contentType, id, transform = noop) => {
+export const getFullContentById = async (contentType, id, transform = noop) => {
   const queryResults = await client.getEntries({
     'content_type': contentType,
     'sys.id': id,
@@ -42,7 +42,7 @@ const getFullContentById = async (contentType, id, transform = noop) => {
   return transform(_.head(queryResults.items));
 };
 
-const getStaticSlugsForContentType = async (contentType, transform = noop) => {
+export const getStaticSlugsForContentType = async (contentType, transform = noop) => {
   const queryResults = await client.getEntries({
     content_type: contentType,
     select: 'fields.slug'
@@ -55,16 +55,20 @@ const getStaticSlugsForContentType = async (contentType, transform = noop) => {
   return [];
 };
 
-const getGlobalSettings = async (transform = noop) => {
+export const getGlobalSettings = async (transform = noop) => {
+  // const entry = await client.getEntry(process.env.CONTENTFUL_SETTINGS_ID);
+  // console.log('settings', removeCircularRefs(entry));
+  // return transform(removeCircularRefs(entry));
   const entries = await client.getEntries({
     'content_type': 'settingsGlobal',
     'sys.id': process.env.CONTENTFUL_SETTINGS_ID,
     'include': 2
   });
+  console.log('settings', JSON.stringify(removeCircularRefs(entries), null, 2));
   return transform(_.head(removeCircularRefs(entries).items));
 };
 
-const adapted = (config) => {
+export default (config) => {
   const transform = Adapter(config);
   return {
     getPageBySlug: getPageBySlug.bind(null, transform),
@@ -72,12 +76,4 @@ const adapted = (config) => {
     getStaticSlugsForContentType: getStaticSlugsForContentType.bind(null, transform),
     getGlobalSettings: getGlobalSettings.bind(null, transform)
   };
-};
-
-module.exports = {
-  default: adapted,
-  getPageBySlug,
-  getFullContentById,
-  getStaticSlugsForContentType,
-  getGlobalSettings
 };
