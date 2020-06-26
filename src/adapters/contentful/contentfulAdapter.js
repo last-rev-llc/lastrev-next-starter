@@ -1,14 +1,8 @@
 import _ from 'lodash';
+import parseLink from './linkParser';
 
 const isContentfulObject = (obj) => {
   return typeof obj === 'object' && _.has(obj, 'sys') && _.has(obj, 'fields');
-};
-
-const getUrl = (mapping, slug) => {
-  return {
-    href: mapping.url.replace('[key]', `[${mapping.key}]`),
-    as: mapping.url.replace('[key]', `${slug}`)
-  };
 };
 
 const isEntry = (obj) => {
@@ -23,54 +17,6 @@ const isAsset = (obj) => {
     sys: { type }
   } = obj;
   return type === 'Asset';
-};
-
-const parseLink = ({ internalUrlActionText, externalUrlActionText, anchorLinkActionText, urlMap, fields }) => {
-  const { action, internalUrl, externalUrl, linkText, anchorTagName, icon } = fields;
-
-  let href;
-  let as;
-  let target;
-  let isInternal = false;
-
-  switch (action) {
-    case internalUrlActionText: {
-      if (!internalUrl) throw Error('internalUrl not selected', internalUrl);
-      const {
-        fields: { slug },
-        sys: {
-          contentType: {
-            sys: { id: contentTypeId }
-          }
-        }
-      } = internalUrl;
-      if (!_.has(urlMap, contentTypeId)) throw Error(`urlMap does not contain entry for ${contentTypeId}`);
-      ({ href, as } = getUrl(urlMap[contentTypeId], slug));
-      isInternal = true;
-      break;
-    }
-
-    case externalUrlActionText:
-      if (!externalUrl) throw Error('externalUrl empty', externalUrl);
-      href = externalUrl;
-      target = '_blank';
-      break;
-    case anchorLinkActionText:
-      if (!anchorTagName) throw Error('anchorTagName empty', anchorTagName);
-      href = `#${anchorTagName}`;
-      break;
-    default:
-      break;
-  }
-
-  return {
-    linkText,
-    isInternal,
-    href,
-    as,
-    target,
-    icon
-  };
 };
 
 const Adapter = ({
@@ -102,10 +48,13 @@ const Adapter = ({
         const url = {};
         if (contentTypeId === linkContentType) {
           return parseLink({
-            internalUrlActionText,
-            externalUrlActionText,
-            anchorLinkActionText,
-            contentTypeId,
+            sameWindowActionText,
+            newWindowActionText,
+            modalActionText,
+            downloadActionText,
+            manualEntryTypeText,
+            contentRefTypeText,
+            assetRefTypeText,
             fields,
             urlMap
           });

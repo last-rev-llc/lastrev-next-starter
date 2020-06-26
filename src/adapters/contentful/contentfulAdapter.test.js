@@ -8,7 +8,13 @@ const urlMap = {
   }
 };
 
-const transform = Adapter({ urlMap, linkContentType: 'uieCta' });
+const transform = Adapter({
+  urlMap,
+  linkContentType: 'uieCta',
+  manualEntryTypeText: 'Manual URL',
+  modalActionText: 'Open a modal',
+  contentRefTypeText: 'ContentReference'
+});
 
 describe('Contentful Adapter', () => {
   it('converts the data correctly', () => {

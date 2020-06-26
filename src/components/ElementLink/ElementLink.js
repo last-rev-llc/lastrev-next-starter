@@ -1,25 +1,24 @@
 /* eslint-disable react/jsx-max-props-per-line */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
 export const ElementLinkPropTypes = {
   className: PropTypes.string,
-  isInternal: PropTypes.bool.isRequired,
   href: PropTypes.string.isRequired,
   as: PropTypes.string,
   linkText: PropTypes.string.isRequired,
   icon: PropTypes.string,
   target: PropTypes.string,
   isModal: PropTypes.bool.isRequired,
-  isDownload: PropTypes.bool.isRequired,
+  download: PropTypes.bool.isRequired,
   trackingId: PropTypes.string,
   style: PropTypes.string
 };
 
-const internalLinkPropTypes = {
+const NextLinkPropTypes = {
   href: PropTypes.string.isRequired,
   as: PropTypes.string,
   className: PropTypes.string,
@@ -27,17 +26,17 @@ const internalLinkPropTypes = {
   trackingId: PropTypes.string
 };
 
-const standardLinkPropTypes = {
+const StandardLinkPropTypes = {
   href: PropTypes.string.isRequired,
   target: PropTypes.string,
   className: PropTypes.string,
   linkText: PropTypes.string.isRequired,
   isModal: PropTypes.bool.isRequired,
-  isDownload: PropTypes.bool.isRequired,
+  download: PropTypes.bool.isRequired,
   trackingId: PropTypes.string
 };
 
-const StandardLink = ({ target, href, className, linkText, isModal, isDownload, trackingId }) => {
+const StandardLink = ({ target, href, className, linkText, isModal, download, trackingId }) => {
   let onClick = null;
 
   if (isModal) {
@@ -55,13 +54,13 @@ const StandardLink = ({ target, href, className, linkText, isModal, isDownload, 
       target={target}
       rel="noopener noreferrer"
       data-testid="ElementLink"
-      download={isDownload}>
+      download={download}>
       {linkText}
     </a>
   );
 };
 
-StandardLink.propTypes = standardLinkPropTypes;
+StandardLink.propTypes = StandardLinkPropTypes;
 
 StandardLink.defaultProps = {
   className: null,
@@ -69,19 +68,19 @@ StandardLink.defaultProps = {
   trackingId: null
 };
 
-const InternalLink = ({ href, as, className, linkText, trackingId }) => {
+const NextLink = ({ href, as, className, linkText, trackingId }) => {
   return (
-    <NextLink href={href} as={as}>
+    <Link href={href} as={as}>
       <a className={className} data-testid="ElementLink" data-trackingid={trackingId}>
         {linkText}
       </a>
-    </NextLink>
+    </Link>
   );
 };
 
-InternalLink.propTypes = internalLinkPropTypes;
+NextLink.propTypes = NextLinkPropTypes;
 
-InternalLink.defaultProps = {
+NextLink.defaultProps = {
   className: null,
   as: null,
   trackingId: null
@@ -92,24 +91,22 @@ const getFullClassName = ({ style, className, icon }) => {
   return `${style ? `link_${style}` : ''} ${className || ''} ${icon ? `icon_${_.snakeCase(icon)}` : ''}`;
 };
 
-function ElementLink({
-  className,
-  isInternal,
-  href,
-  as,
-  target,
-  linkText,
-  icon,
-  isModal,
-  isDownload,
-  trackingId,
-  style
-}) {
+function ElementLink({ className, href, as, target, linkText, icon, isModal, download, trackingId, style }) {
   const fullClassName = getFullClassName({ style, className, icon });
 
-  if (isInternal) {
-    return <InternalLink href={href} as={as} className={fullClassName} linkText={linkText} trackingId={trackingId} />;
+  // TODO: is this enough of a check? Someone could pass in
+  // my.website.com/something, and this should be handled
+  const isInternal = href.startsWith('/');
+  const isTargetSelf = !target || target === '_self';
+
+  // if the window should change URl without refreshing the page,
+  // use Next/Link
+  const useNextLink = isInternal && !download && !isModal && isTargetSelf;
+
+  if (useNextLink) {
+    return <NextLink href={href} as={as} className={fullClassName} linkText={linkText} trackingId={trackingId} />;
   }
+
   return (
     <StandardLink
       target={target}
@@ -117,7 +114,7 @@ function ElementLink({
       className={fullClassName}
       linkText={linkText}
       isModal={isModal}
-      isDownload={isDownload}
+      download={download}
       trackingId={trackingId}
     />
   );
