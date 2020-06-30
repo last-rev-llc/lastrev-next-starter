@@ -19,17 +19,12 @@ const noop = (data) => {
 };
 
 export const getPageBySlug = async (slug, contentType, transform = noop) => {
-  try {
-    const entries = await client.getEntries({
-      'content_type': contentType,
-      'fields.slug': slug,
-      'include': 4
-    });
-    return transform(_.head(removeCircularRefs(entries).items));
-  } catch (err) {
-    console.log(err);
-  }
-  return null;
+  const entries = await client.getEntries({
+    'content_type': contentType,
+    'fields.slug': slug,
+    'include': 4
+  });
+  return transform(_.head(removeCircularRefs(entries).items));
 };
 
 export const getFullContentById = async (contentType, id, transform = noop) => {
@@ -56,16 +51,16 @@ export const getStaticSlugsForContentType = async (contentType, transform = noop
 };
 
 export const getGlobalSettings = async (transform = noop) => {
-  // const entry = await client.getEntry(process.env.CONTENTFUL_SETTINGS_ID);
-  // console.log('settings', removeCircularRefs(entry));
-  // return transform(removeCircularRefs(entry));
   const entries = await client.getEntries({
     'content_type': 'settingsGlobal',
     'sys.id': process.env.CONTENTFUL_SETTINGS_ID,
     'include': 2
   });
-  console.log('settings', JSON.stringify(removeCircularRefs(entries), null, 2));
   return transform(_.head(removeCircularRefs(entries).items));
+};
+
+export const getContentTypes = async () => {
+  return client.getContentTypes();
 };
 
 export default (config) => {

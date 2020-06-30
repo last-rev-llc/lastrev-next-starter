@@ -1,4 +1,10 @@
 import Contentful from './contentfulIntegration';
 
 export default Contentful;
-export * from './contentfulIntegration';
+export {
+  getFullContentById,
+  getGlobalSettings,
+  getPageBySlug,
+  getStaticSlugsForContentType,
+  getContentTypes
+} from './contentfulIntegration';

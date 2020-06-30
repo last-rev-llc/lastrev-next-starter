@@ -19,12 +19,13 @@
     "build-content": "./build-content"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "contentful": "^7.14.4",
+    "@babel/runtime": "^7.10.3",
+    "@bit/bit.envs.compilers.babel": "file:./components/compilers/babel"
   },
   "peerDependencies": {
-    "@babel/runtime": "^7.10.3",
     "bootstrap": "^4.5.0",
-    "contentful": "^7.14.4",
     "dotenv": "^8.2.0",
     "next": "^9.4.0",
     "next-redux-wrapper": "^6.0.2",
@@ -37,6 +38,7 @@
     "sass": "^1.26.5"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.4",
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.0",
     "@storybook/addon-actions": "^5.3.18",
@@ -92,14 +94,20 @@
       "tester": "bit.envs/testers/jest@22.4.3"
     },
     "overrides": {
-      "src/adapters/*": {
+      "adapters/*": {
         "env": {
-          "compiler": "bit.envs/compilers/babel@7.0.4"
+          "compiler": "lastrev.compilers/compilers/babel@7.0.6"
+        },
+        "dependencies": {
+          "@babel/runtime": "^7.10.3"
         }
       },
-      "src/integrations/*": {
+      "integrations/*": {
         "env": {
-          "compiler": "bit.envs/compilers/babel@7.0.4"
+          "compiler": "lastrev.compilers/compilers/babel@7.0.6"
+        },
+        "dependencies": {
+          "@babel/runtime": "^7.10.3"
         }
       }
     },

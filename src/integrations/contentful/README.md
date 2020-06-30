@@ -17,7 +17,7 @@ This module expects the following environment variables:
 The module can be used one of two ways. First you can call the methods directly, which will give you the raw Contentful data:
 
 ```javascript
-import { getPageBySlug } from '@bit.dev/lastrev.integrations/contentful';
+import { getPageBySlug } from '@bit/lastrev.integrations.integrations.contentful';
 
 getPageBySlub(id, contentType).then((raw) => {
   console.log(raw);
@@ -60,7 +60,7 @@ const linkContentType = 'ctaLink';
 
 const { getPageBySlug } = Contentful({ urlMap, linkContentType });
 
-getPageBySlub(id, contentType).then((clean) => {
+getPageBySlug(id, contentType).then((clean) => {
   console.log(clean);
   /*
   {
