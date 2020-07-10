@@ -6,5 +6,7 @@ export {
   getGlobalSettings,
   getPageBySlug,
   getStaticSlugsForContentType,
-  getContentTypes
+  getContentTypes,
+  getContentType,
+  getFirstItemForContentType
 } from './contentfulIntegration';

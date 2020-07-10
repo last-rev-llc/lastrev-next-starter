@@ -1,26 +1,10 @@
 import _ from 'lodash';
 import parseLink from './linkParser';
-
-const isContentfulObject = (obj) => {
-  return typeof obj === 'object' && _.has(obj, 'sys') && _.has(obj, 'fields');
-};
-
-const isEntry = (obj) => {
-  const {
-    sys: { type }
-  } = obj;
-  return type === 'Entry';
-};
-
-const isAsset = (obj) => {
-  const {
-    sys: { type }
-  } = obj;
-  return type === 'Asset';
-};
+import parseAsset from './assetParser';
+import { isEntry, isAsset, extractContentTypeId, isLink, extractId } from './helpers';
 
 const Adapter = ({
-  urlMap,
+  urlMap = {},
   linkContentType = 'elementLink',
   sameWindowActionText = 'Open in the same window',
   newWindowActionText = 'Open in a new window',
@@ -34,71 +18,36 @@ const Adapter = ({
     if (_.isArray(obj)) {
       return _.map(obj, traverse);
     }
-    if (isContentfulObject(obj)) {
-      if (isEntry(obj)) {
-        const {
-          fields,
-          sys: {
-            id,
-            contentType: {
-              sys: { id: contentTypeId }
-            }
-          }
-        } = obj;
-        const url = {};
-        if (contentTypeId === linkContentType) {
-          return parseLink({
-            sameWindowActionText,
-            newWindowActionText,
-            modalActionText,
-            downloadActionText,
-            manualEntryTypeText,
-            contentRefTypeText,
-            assetRefTypeText,
-            fields,
-            urlMap
-          });
-        }
-        const parsedFields = {};
-        _.each(fields, (val, key) => {
-          parsedFields[key] = traverse(val);
-        });
-        return {
-          id,
-          contentTypeId,
-          ...parsedFields,
-          ...url
-        };
-      }
-      if (isAsset(obj)) {
-        const {
-          fields: {
-            title,
-            description,
-            file: {
-              url,
-              details: {
-                size,
-                image: { width, height }
-              },
-              fileName: filename,
-              contentType
-            }
-          }
-        } = obj;
-        return {
-          title,
-          description,
-          url,
-          size,
-          width,
-          height,
-          filename,
-          contentType
-        };
-      }
-      return `TODO: ${obj.sys.type}`;
+    if (isLink(obj, linkContentType)) {
+      return parseLink({
+        sameWindowActionText,
+        newWindowActionText,
+        modalActionText,
+        downloadActionText,
+        manualEntryTypeText,
+        contentRefTypeText,
+        assetRefTypeText,
+        fields: obj.fields,
+        urlMap
+      });
     }
+    if (isEntry(obj)) {
+      const id = extractId(obj);
+      const contentTypeId = extractContentTypeId(obj);
+      const parsedFields = _.mapValues(obj.fields, traverse);
+      return {
+        id,
+        contentTypeId,
+        ...parsedFields
+      };
+    }
+    if (isAsset(obj)) {
+      return parseAsset(obj);
+    }
+    if (_.isObject(obj)) {
+      return _.mapValues(obj.fields, traverse);
+    }
+    // most likely a simple value field
     return obj;
   };
 

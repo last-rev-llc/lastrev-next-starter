@@ -19,10 +19,11 @@
     "build-content": "./build-content"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
-    "contentful": "^7.14.4",
     "@babel/runtime": "^7.10.3",
-    "@bit/bit.envs.compilers.babel": "file:./components/compilers/babel"
+    "@bit/bit.envs.compilers.babel": "file:./components/compilers/babel",
+    "@last-rev/adapter-contentful": "^1.0.0",
+    "contentful": "^7.14.4",
+    "lodash": "^4.17.15"
   },
   "peerDependencies": {
     "bootstrap": "^4.5.0",
