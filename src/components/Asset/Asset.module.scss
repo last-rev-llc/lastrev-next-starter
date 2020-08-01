@@ -1,0 +1,13 @@
+.data {
+  color: #000;
+
+  table,
+  th,
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  th {
+    text-align: right;
+  }
+}

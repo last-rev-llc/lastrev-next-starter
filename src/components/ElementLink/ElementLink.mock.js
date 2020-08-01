@@ -1,31 +1,47 @@
-import mockPageGeneral from '../PageGeneral/PageGeneral.mock';
-
 export const internalUrl = {
-  action: 'Go to Internal URL',
-  internalUrl: {
-    sys: {
-      contentType: {
-        sys: {
-          id: 'pageGeneral'
-        }
-      }
-    },
-    fields: mockPageGeneral
-  },
+  href: '/[slug]',
+  as: '/test',
   linkText: 'My Page',
-  icon: 'None'
+  target: null,
+  icon: 'phone',
+  style: 'int-style',
+  isModal: false,
+  download: false,
+  trackingId: 'int123'
 };
 
 export const externalUrl = {
-  action: 'Go to External URL',
   linkText: 'Last Rev',
-  externalUrl: 'http://www.lastrev.com',
-  icon: 'None'
+  href: 'http://www.lastrev.com',
+  as: null,
+  target: '_blank',
+  style: 'ext-style',
+  isModal: false,
+  download: false,
+  trackingId: 'ext123',
+  icon: null
 };
 
 export const anchorTag = {
-  action: 'Anchor Link',
   linkText: 'Top',
-  anchorTagName: 'top',
-  icon: 'None'
+  href: '#top',
+  as: null,
+  target: null,
+  style: 'anch-style',
+  isModal: false,
+  download: false,
+  trackingId: 'tag123',
+  icon: 'top'
+};
+
+export const mediaDownload = {
+  linkText: 'Download',
+  href: '/my/media.pdf',
+  as: null,
+  target: null,
+  style: 'med-style',
+  isModal: false,
+  download: true,
+  trackingId: 'media123',
+  icon: null
 };

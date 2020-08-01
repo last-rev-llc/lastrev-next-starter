@@ -1,38 +1,60 @@
 import React from 'react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import ElementLink from './ElementLink';
-import { internalUrl, externalUrl, anchorTag } from './ElementLink.mock';
+import { internalUrl, externalUrl, anchorTag, mediaDownload } from './ElementLink.mock';
 
 export default {
   title: 'ElementLink',
   decorators: [withKnobs]
 };
 
-const actionChoices = ['Go to Internal URL', 'Go to External URL', 'Anchor Tag'];
-
-const iconChoices = ['None', 'Profile', 'Map Marker', 'Phone'];
-
 export const internalUrlLink = () => (
   <ElementLink
-    action={select('action', actionChoices, internalUrl.action)}
-    internalUrl={internalUrl.internalUrl}
+    href={internalUrl.href}
+    as={internalUrl.as}
     linkText={text('linkText', internalUrl.linkText)}
-    icon={select('icon', iconChoices, internalUrl.icon)}
+    icon={text('icon', internalUrl.icon)}
+    target={text('target', internalUrl.target)}
+    isModal={boolean('isModal', internalUrl.isModal)}
+    download={boolean('download', internalUrl.download)}
+    style={text('style', internalUrl.style)}
+    trackingId={text('trackingId', internalUrl.trackingId)}
   />
 );
 export const externalUrlLink = () => (
   <ElementLink
-    action={select('action', actionChoices, externalUrl.action)}
-    externalUrl={text('externalUrl', externalUrl.externalUrl)}
+    href={externalUrl.href}
     linkText={text('linkText', externalUrl.linkText)}
-    icon={select('icon', iconChoices, externalUrl.icon)}
+    icon={text('icon', externalUrl.icon)}
+    target={text('target', externalUrl.target)}
+    isModal={boolean('isModal', externalUrl.isModal)}
+    download={boolean('download', externalUrl.download)}
+    style={text('style', externalUrl.style)}
+    trackingId={text('trackingId', externalUrl.trackingId)}
   />
 );
 export const anchorTagLink = () => (
   <ElementLink
-    action={select('action', actionChoices, anchorTag.action)}
-    anchorTagName={text('anchorTagName', anchorTag.anchorTagName)}
+    href={anchorTag.href}
     linkText={text('linkText', anchorTag.linkText)}
-    icon={select('icon', iconChoices, anchorTag.icon)}
+    icon={text('icon', anchorTag.icon)}
+    target={text('target', anchorTag.target)}
+    isModal={boolean('isModal', anchorTag.isModal)}
+    download={boolean('download', anchorTag.download)}
+    style={text('style', anchorTag.style)}
+    trackingId={text('trackingId', anchorTag.trackingId)}
+  />
+);
+
+export const mediaDownloadLink = () => (
+  <ElementLink
+    href={mediaDownload.href}
+    linkText={text('linkText', mediaDownload.linkText)}
+    icon={text('icon', mediaDownload.icon)}
+    target={text('target', mediaDownload.target)}
+    isModal={boolean('isModal', mediaDownload.isModal)}
+    download={boolean('download', mediaDownload.download)}
+    style={text('style', mediaDownload.style)}
+    trackingId={text('trackingId', mediaDownload.trackingId)}
   />
 );

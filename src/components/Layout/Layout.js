@@ -1,31 +1,44 @@
 import React from 'react';
-import Head from 'next/head';
-import propTypes from './Layout.propTypes';
-import GlobalHeader from '../GlobalHeader';
+import PropTypes from 'prop-types';
+import Head, { HeadPropTypes } from '../Head';
+import styles from './Layout.module.scss';
+import getSettings from '../../buildArtifacts/settings';
 import GlobalFooter from '../GlobalFooter';
+import TopNavBar from '../TopNavBar';
 
-function Layout({ settingsGlobal, children }) {
+export const LayoutPropTypes = {
+  children: PropTypes.node.isRequired,
+  seo: PropTypes.shape(HeadPropTypes)
+};
+
+function Layout({ seo, children }) {
+  const settings = getSettings();
+  const { topNavBar, globalFooter } = settings;
+
   return (
-    <>
-      <Head>
-        <title>Last Rev - NextJS - Contentful Starter</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className='wrap' role='document'>
-        <GlobalHeader />
-        <div className='content'>
-          <main className='main'>
-            {children}
-          </main>
-        </div>
-        <GlobalFooter />
-      </div>
-    </>
+    <div className={styles.main}>
+      <Head title={seo.title} description={seo.description} keywords={seo.keywords} />
+      {topNavBar ? (
+        <TopNavBar
+          _id={topNavBar._id}
+          logoUrl={topNavBar.logoUrl}
+          logo={topNavBar.logo}
+          topNavItems={topNavBar.topNavItems}
+          style={topNavBar.style}
+        />
+      ) : null}
+      {children}
+
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      {globalFooter ? <GlobalFooter {...globalFooter} /> : null}
+    </div>
   );
 }
 
+Layout.propTypes = LayoutPropTypes;
 
-Layout.propTypes = propTypes;
-
+Layout.defaultProps = {
+  seo: null
+};
 
 export default Layout;

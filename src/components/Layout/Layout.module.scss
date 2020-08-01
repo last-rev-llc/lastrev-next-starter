@@ -1,5 +1,7 @@
-@import '../../styles/component.scss';
-
-.header {
-  color: red;
+.main {
+  padding: 0;
+  p {
+    font-size: rem(16px);
+    line-height: rem(26px);
+  }
 }

@@ -1,12 +1,20 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import PropTypes from 'prop-types';
+import { withKnobs, text, object } from '@storybook/addon-knobs';
 import ContentModule from './ContentModule';
-import mockContent from './ContentModule.mock';
+import ModuleTextMock from '../ModuleText/ModuleText.mock';
+
+const ColWrap = ({ children }) => <div className="container sub-section">{children}</div>;
+
+ColWrap.propTypes = {
+  children: PropTypes.string.isRequired
+};
 
 export default {
   title: 'ContentModule',
-  decorators: [withKnobs]
+  decorators: [withKnobs, (storyFn) => <ColWrap>{storyFn()}</ColWrap>]
 };
 
-export const normal = () => <ContentModule header={text('header', mockContent.header)} />;
-export const anotherVersion = () => <ContentModule header={text('header', mockContent.header)} />;
+export const normal = () => (
+  <ContentModule contentTypeId={text('contentTypeId', 'moduleText')} fields={object('fields', ModuleTextMock)} />
+);

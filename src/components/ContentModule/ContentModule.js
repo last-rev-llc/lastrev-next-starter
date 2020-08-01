@@ -1,20 +1,28 @@
 import React from 'react';
-import propTypes from './ContentModule.propTypes';
-import styles from './ContentModule.module.scss';
-import mockContent from './ContentModule.mock';
+import PropTypes from 'prop-types';
+import contentMapping from '../../buildArtifacts/mapping';
 
-function ContentModule({ header }) {
-  return (
-    <div data-testid="ContentModule">
-      <h1 className={styles.header} data-testid="ContentModule-header">
-        {header}
-      </h1>
-    </div>
-  );
+export const ContentModulePropTypes = {
+  contentTypeId: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  fields: PropTypes.object.isRequired
+};
+
+function ContentModule({ contentTypeId, fields }) {
+  const Main = contentMapping[contentTypeId];
+
+  if (!Main) {
+    // eslint-disable-next-line no-console
+    console.log(
+      `Did not find mapping for Content Type ${contentTypeId}. Please add an override to the buid property in .lastrevrc`
+    );
+    return null;
+  }
+
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <Main {...fields} />;
 }
 
-ContentModule.propTypes = propTypes;
-
-ContentModule.defaultProps = mockContent;
+ContentModule.propTypes = ContentModulePropTypes;
 
 export default ContentModule;

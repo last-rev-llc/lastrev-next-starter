@@ -1,0 +1,35 @@
+{
+  "build": {
+    "useAdapter": true,
+    "writeSettings": true,
+    "writeAdapterConfig": true,
+    "writePaths": true,
+    "writeLocaleData": false,
+    "writeMappings": true,
+    "settingsInclude": 10,
+    "paths": {
+      "pageGeneral": "slug",
+      "recipeDetail": "slug"
+    },
+    "mappings": {
+      "exclude": [
+        "PageGeneral"
+      ],
+      "overrides": {
+        "settingsGlobal": "Layout"
+      }
+    }
+  },
+  "adapter": {
+    "urlMap": {
+      "pageGeneral": {
+        "url": "/[key]",
+        "key": "slug"
+      },
+      "recipeDetail": {
+        "url": "recipes/[key]",
+        "key": "slug"
+      }
+    }
+  }
+}

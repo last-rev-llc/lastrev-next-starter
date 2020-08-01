@@ -1,41 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NextHead from 'next/head';
-import propTypes from './Head.propTypes';
+import mockProps from './Head.mock';
 
-const getValue = (obj) => {
-  return obj ? obj.value : '';
+export const HeadPropTypes = {
+  title: PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string
+  }),
+  description: PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string
+  }),
+  keywords: PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string
+  })
 };
 
-const getUrl = (obj) => {
-  const val = getValue(obj);
-  return val ? val.url : '';
-};
-
-function Head({
-  title,
-  description,
-  keywords,
-  robots,
-  'og:image': ogImage,
-  'og:title': ogTitle,
-  'og:description': ogDescription,
-  'twitter:image': twitterImage,
-  'twitter:title': twitterTitle,
-  'twitter:description': twitterDescription
-}) {
+function Head({ title, description, keywords }) {
+  const getValue = (obj) => {
+    return obj ? obj.value : '';
+  };
   return (
     <NextHead>
-      <title key="title">{getValue(title)}</title>
-
-      <meta name="description" key="description" content={getValue(description)} />
-      <meta name="keywords" key="keywords" content={getValue(keywords)} />
-      <meta name="robots" key="robots" content={getValue(robots)} />
-      <meta property="og:image" content={getUrl(ogImage)} />
-      <meta property="og:title" content={getValue(ogTitle)} />
-      <meta property="og:description" content={getValue(ogDescription)} />
-      <meta name="twitter:image" content={getUrl(twitterImage)} />
-      <meta name="twitter:title" content={getValue(twitterTitle)} />
-      <meta name="twitter:description" content={getValue(twitterDescription)} />
+      <title data-testid="Head-title" key="title">
+        {getValue(title)}
+      </title>
+      <meta name="description" key="description" content={getValue(description)} data-testid="Head-description" />
+      <meta name="keywords" key="keywords" content={getValue(keywords)} data-testid="Head-keywords" />
 
       <link rel="icon" href="/favicon.ico" />
       <meta name="contentful_space" content={process.env.CONTENTFUL_SPACE_ID} key="spaceId" />
@@ -44,13 +37,10 @@ function Head({
   );
 }
 
-Head.propTypes = propTypes;
+Head.propTypes = HeadPropTypes;
 
 Head.defaultProps = {
-  title: null,
-  description: null,
-  keywords: null,
-  robots: null
+  ...mockProps
 };
 
 export default Head;

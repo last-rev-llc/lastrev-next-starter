@@ -1,20 +1,32 @@
 import React from 'react';
-import { getPageBySlug } from '../../integrations/contentful';
+import PropTypes from 'prop-types';
+import Contentful from '@last-rev/integration-contentful';
+import pathData from '../../buildArtifacts/paths';
+import adapterConfig from '../../buildArtifacts/adapterConfig';
 import Layout from '../../components/Layout';
-import PageGeneral from '../../components/PageGeneral';
+import PageGeneral, { PageGeneralPropTypes } from '../../components/PageGeneral';
+import { HeadPropTypes } from '../../components/Head';
+import extractSeoOrDefault from '../../utils/extractSeoOrDefault';
 
-const { '/': paths } = require('../../../content-cache/paths.json');
-const settingsGlobal = require('../../../content-cache/settings.json');
+const { pageGeneral: paths } = pathData;
+const { getPageBySlug } = Contentful(adapterConfig);
 
-const CONTENT_TYPE = 'pageGeneral';
-
-const DynamicGeneralPage = ({ settingsGlobal, pageData }) => {
-  return (
-    <Layout settingsGlobal={settingsGlobal}>
-      <PageGeneral {...pageData.fields} />
-    </Layout>
-  );
+export const GeneralPagePropTypes = {
+  pageData: PropTypes.shape(PageGeneralPropTypes).isRequired,
+  seo: PropTypes.shape(HeadPropTypes).isRequired
 };
+
+function GeneralPage({ pageData, seo }) {
+  const { _id, content, pageTitle } = pageData;
+
+  return (
+    <>
+      <Layout seo={seo}>
+        <PageGeneral _id={_id} content={content} pageTitle={pageTitle} />
+      </Layout>
+    </>
+  );
+}
 
 // This function gets called at build time
 export const getStaticPaths = async () => {
@@ -26,14 +38,17 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const pageData = await getPageBySlug(slug, CONTENT_TYPE);
-
+  const pageData = await getPageBySlug({ slug, contentTypeId: 'pageGeneral', include: 6 });
   return {
     props: {
       pageData,
-      settingsGlobal
+      seo: extractSeoOrDefault(pageData)
     }
   };
 };
 
-export default DynamicGeneralPage;
+GeneralPage.propTypes = GeneralPagePropTypes;
+
+GeneralPage.defaultProps = {};
+
+export default GeneralPage;
