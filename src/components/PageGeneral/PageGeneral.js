@@ -1,38 +1,38 @@
 import React from 'react';
-import propTypes from './PageGeneral.propTypes';
+import PropTypes from 'prop-types';
 import styles from './PageGeneral.module.scss';
+import { StandardHeroPropTypes } from '../StandardHero';
+import { TextModulePropTypes } from '../TextModule';
+import { HorizontalModulePropTypes } from '../HorizontalModule';
 import ContentModule from '../ContentModule';
-import ModuleHero from '../ModuleHero';
+import sidekick from '../../utils/sidekick';
 
-const PageGeneral = ({ modules, pageTitle, pageHero }) => {
+export const PageGeneralPropTypes = {
+  _id: PropTypes.string.isRequired,
+  _contentTypeId: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  content: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.shape(StandardHeroPropTypes),
+      PropTypes.shape(TextModulePropTypes),
+      PropTypes.shape(HorizontalModulePropTypes)
+    ])
+  ).isRequired,
+  pageTitle: PropTypes.string.isRequired
+};
+
+function PageGeneral({ _id, content, pageTitle }) {
   return (
-    <div className={styles.pageGeneral}>
-      {pageHero ? (
-        <div data-testid="PageGeneral-moduleHero">
-          <ModuleHero className={styles.moduleHero} {...pageHero.fields} />
-        </div>
-      ) : (
-        <h1 data-testid="PageGeneral-pageTitle" className={styles.pageTitle}>
-          {pageTitle}
-        </h1>
-      )}
-      {modules && modules.length ? (
-        <div data-testid="PageGeneral-modules">
-          {modules.map((module) => (
-            <ContentModule key={module.sys.id} contentTypeId={module.sys.contentType.sys.id} fields={module.fields} />
-          ))}
-        </div>
-      ) : null}
+    <div data-testid="PageGeneral" className={styles.page_general}>
+      <h1 {...sidekick(_id, 'pageTitle')}>{pageTitle}</h1>
+      {content.map((contentModule) => (
+        <ContentModule contentTypeId={contentModule.contentTypeId} fields={contentModule} />
+      ))}
     </div>
   );
-};
+}
+PageGeneral.propTypes = PageGeneralPropTypes;
 
-PageGeneral.propTypes = propTypes;
-
-PageGeneral.defaultProps = {
-  pageTitle: null,
-  pageHero: null,
-  modules: null
-};
+PageGeneral.defaultProps = {};
 
 export default PageGeneral;

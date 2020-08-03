@@ -3,11 +3,12 @@ import { useRouter } from 'next/router';
 
 import PreviewWrapper from '../components/PreviewWrapper';
 
-const Preview = () => {
+function Preview() {
+  const router = useRouter();
   const {
-    query: { id, contentType }
-  } = useRouter();
-  return <PreviewWrapper contentType={contentType} id={id} />;
-};
+    query: { id, contentType, locale }
+  } = router;
+  return <PreviewWrapper contentType={contentType} id={id} locale={locale} />;
+}
 
 export default Preview;

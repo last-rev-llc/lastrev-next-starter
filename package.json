@@ -4,21 +4,26 @@
   "private": true,
   "scripts": {
     "lint": "eslint --fix \"**/*.js\"",
-    "build": "npm run build-content && next build && next export",
-    "build:dev": "npm run build-content && netlify build",
+    "build": "npm run build:pre && next build && next export",
+    "build:dev": "npm run build:pre && netlify build",
     "export": "next export",
-    "start": "npm run build-content && netlify dev",
-    "static": "next build && serve out",
+    "start": "netlify dev",
+    "start:dev": "npm run build:pre && next dev",
+    "static": "npm run build:pre && next build && next export && serve out",
     "netlify:link": "netlify link",
     "netlify:newfunc": "netlify functions:create",
     "test": "jest",
     "test:watch": "jest --watch",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "build-storybook:static": "build-storybook -c .storybook -o .out && serve .out",
-    "build-content": "./build-content"
+    "migrate": "node -r dotenv/config migrations/index.js",
+    "build:pre": "lr-prefetch",
+    "format": "prettier --write \"src/**/*.js\""
   },
   "dependencies": {
+    "@last-rev/integration-contentful": "^4.0.2",
+    "@sentry/react": "^5.20.1",
     "app-root-path": "^3.0.0",
     "bootstrap": "^4.5.0",
     "contentful": "^7.14.4",
@@ -26,9 +31,9 @@
     "lodash": "^4.17.15",
     "next": "^9.4.0",
     "next-redux-wrapper": "^6.0.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-redux": "^7.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-form": "^8.3.6",
     "redux-thunk": "^2.3.0",
@@ -38,6 +43,8 @@
     "@babel/core": "^7.9.6",
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.0",
+    "@last-rev/build-prefetch-content": "^4.0.2",
+    "@last-rev/generator": "^1.0.8",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
@@ -45,6 +52,7 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "@testing-library/react": "^10.0.4",
+    "@types/dotenv": "^8.2.0",
     "@types/jest": "^26.0.0",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
@@ -59,13 +67,27 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.0.1",
+    "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
+    "lint-staged": "^10.2.11",
     "netlify-cli": "^2.51.0",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
     "redux-mock-store": "^1.5.4",
     "sass-loader": "^8.0.2",
     "serve": "^11.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run test"
+    }
+  },
+  "lint-staged": {
+    "packages/*src/**/*.{js,jsx,json,css,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }

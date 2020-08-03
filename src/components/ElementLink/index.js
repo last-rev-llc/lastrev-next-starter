@@ -1,3 +1,5 @@
-import ElementLink from './ElementLink';
+import ElementLink, { ElementLinkPropTypes } from './ElementLink';
+
+export { ElementLinkPropTypes };
 
 export default ElementLink;

@@ -3,18 +3,19 @@ import { withKnobs, text, object } from '@storybook/addon-knobs';
 import PageGeneral from './PageGeneral';
 import mockContent from './PageGeneral.mock';
 
+const { _id, _contentTypeId, slug, content, pageTitle } = mockContent;
+
 export default {
   title: 'PageGeneral',
   decorators: [withKnobs]
 };
 
-export const withPageTitle = () => (
-  <PageGeneral pageTitle={text('pageTitle', mockContent.pageTitle)} modules={object('modules', mockContent.modules)} />
-);
-export const withPageHero = () => (
+export const normal = () => (
   <PageGeneral
-    pageTitle={text('pageTitle', mockContent.pageTitle)}
-    pageHero={mockContent.pageHero}
-    modules={object('modules', mockContent.modules)}
+    _id={_id}
+    _contentTypeId={_contentTypeId}
+    slug={text('slug', slug)}
+    content={object('content', content)}
+    pageTitle={text('pageTitle', pageTitle)}
   />
 );
