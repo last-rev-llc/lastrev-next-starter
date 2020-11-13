@@ -2,8 +2,15 @@
   "build": {
     "useAdapter": true,
     "writeSettings": true,
-    "writeAdapterConfig": true,
+    "writeAdapterConfig": false,
     "writePaths": true,
+    "useWebsiteSectionPaths": true,
+    "websiteSectionPathsConfig": {
+      "pageContentTypes": [
+        "pageLanding",
+        "pageOther"
+      ]
+    },
     "writeLocaleData": false,
     "writeMappings": true,
     "settingsInclude": 10,
@@ -21,15 +28,6 @@
     }
   },
   "adapter": {
-    "urlMap": {
-      "pageGeneral": {
-        "url": "/[key]",
-        "key": "slug"
-      },
-      "recipeDetail": {
-        "url": "recipes/[key]",
-        "key": "slug"
-      }
-    }
+    "urlMap": {}
   }
 }
