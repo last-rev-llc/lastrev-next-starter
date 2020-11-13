@@ -18,8 +18,7 @@
     "build-storybook": "build-storybook -c .storybook -o .out",
     "build-storybook:static": "build-storybook -c .storybook -o .out && serve .out",
     "migrate": "node -r dotenv/config migrations/index.js",
-    "build:pre": "lr-prefetch && npm run build:paths",
-    "build:paths": "node -r dotenv/config build-paths.js",
+    "build:pre": "lr-prefetch",
     "format": "prettier --write \"src/**/*.js\""
   },
   "dependencies": {
